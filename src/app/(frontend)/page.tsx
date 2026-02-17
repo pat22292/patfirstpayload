@@ -69,9 +69,7 @@ export default async function HomePage() {
       <div>
         {products.map((product) => (
           <div key={product.id}>
-            {/* product.featuredImage is populated with the Media object */}
-            {/*<ImageDisplay image={product.filename} imageALT={product.alt} />*/}
-            {/*<p>{product.filename}</p>*/}
+
             <Image
               src={`https://res.cloudinary.com/dgd6bxkak/image/upload/v1/media/${product.filename}`}
               alt={product.alt || 'Featured Image'}
