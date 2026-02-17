@@ -1,8 +1,11 @@
 import { headers as getHeaders } from 'next/headers.js'
 import Image from 'next/image'
 import { getPayload } from 'payload'
+
+
 import React from 'react'
 import { fileURLToPath } from 'url'
+
 
 import config from '@/payload.config'
 import './styles.css'
@@ -12,8 +15,16 @@ export default async function HomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
+  const { docs: products } = await payload.find({ collection: 'product' })
 
   const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
+  const getPosts = async () => {
+    const posts = await payload.find({
+      collection: 'product',
+      depth: 2, // Fetch full image data
+    })
+    return posts.docs
+  }
 
   return (
     <div className="home">
@@ -53,6 +64,19 @@ export default async function HomePage() {
         <a className="codeLink" href={fileURL}>
           <code>app/(frontend)/page.tsx</code>
         </a>
+      </div>
+      <div>
+        {products.map((product) => (
+          <div key={product.id}>
+            {/* product.featuredImage is populated with the Media object */}
+            <Image
+              src={`${product.url}`}
+              alt={product.alt || 'Featured Image'}
+              height={200}
+              width={200}
+            />
+          </div>
+        ))}
       </div>
     </div>
   )
