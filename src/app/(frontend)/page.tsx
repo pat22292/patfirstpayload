@@ -5,7 +5,8 @@ import { getPayload } from 'payload'
 
 import React from 'react'
 import { fileURLToPath } from 'url'
-
+import ImageDisplay from '../../../components/cloudinaryimage'
+import { CldImage } from 'next-cloudinary'
 
 import config from '@/payload.config'
 import './styles.css'
@@ -69,11 +70,14 @@ export default async function HomePage() {
         {products.map((product) => (
           <div key={product.id}>
             {/* product.featuredImage is populated with the Media object */}
+            {/*<ImageDisplay image={product.filename} imageALT={product.alt} />*/}
+            {/*<p>{product.filename}</p>*/}
             <Image
-              src={`${product.url}`}
+              src={`https://res.cloudinary.com/dgd6bxkak/image/upload/v1/media/${product.filename}`}
               alt={product.alt || 'Featured Image'}
               height={200}
               width={200}
+              unoptimized
             />
           </div>
         ))}
