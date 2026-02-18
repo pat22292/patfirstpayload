@@ -1,3 +1,8 @@
+@import "tailwindcss";
+@import "flowbite-react/plugin/tailwindcss";
+@source "../../../.flowbite-react/class-list.json";
+
+
 :root {
   --font-mono: 'Roboto Mono', monospace;
 }
@@ -90,7 +95,7 @@ svg {
 }
 
 .home {
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -162,3 +167,105 @@ svg {
     }
   }
 }
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider {
+  width: 100%;
+  height: 100vh;
+  max-width: 300px;
+  max-height: 300px;
+  border: 1px solid white;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+}
+
+.slide:first-child {
+  clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%);
+}
+/*section div, header {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*}*/
+
+/** {*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+/*body {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  height: 100vh;*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  overflow: hidden;*/
+/*  perspective: 900px;*/
+/*}*/
+
+/*header {*/
+/*  letter-spacing: 0.25em;*/
+/*  color: #fff;*/
+/*  position: fixed;*/
+/*  z-index: 2;*/
+/*  left: 0;*/
+/*  top: 5%;*/
+/*  width: 100vw;*/
+/*  height: 80px;*/
+/*}*/
+
+/*section {*/
+/*  position: absolute;*/
+/*  width: 100vw;*/
+/*  height: 100vh;*/
+/*  left: 0;*/
+/*  top: 0;*/
+/*  visibility: hidden;*/
+/*  opacity: 0;*/
+/*}*/
+/*section div {*/
+/*  position: absolute;*/
+/*  border-radius: 20px;*/
+/*  left: 5%;*/
+/*  top: 5%;*/
+/*  width: 90%;*/
+/*  height: 90%;*/
+/*  color: #fff;*/
+/*  font-size: 10em;*/
+/*}*/
+/*section:nth-child(2) div {*/
+/*  background: #D11BD7;*/
+/*}*/
+/*section:nth-child(3) div {*/
+/*  background: #1B53D7;*/
+/*}*/
+/*section:nth-child(4) div {*/
+/*  background: #1BD7C4;*/
+/*}*/
+/*section:nth-child(5) div {*/
+/*  background: #42D71B;*/
+/*}*/
+/*section:nth-child(6) div {*/
+/*  background: #D7601B;*/
+/*}*/
