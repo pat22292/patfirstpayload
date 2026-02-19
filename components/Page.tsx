@@ -1,8 +1,6 @@
 import { notFound } from 'next/navigation'
 import {getPayloadClient}from '../src/lib/payload'
 import RenderBlocks from '../components/RenderBlocks'
-import HeroBlock from './blocks/HeroBlock'
-import  ContentBlock from './blocks/ContentBlock'
 
 
 type Props = {
@@ -29,7 +27,7 @@ export default async function Page({ params }: Props) {
   return (
     <main>
       <h1>{page.title}</h1>
-      <RenderBlocks blocks={page} />
+      {/*<RenderBlocks blocks={layout} />*/}
     </main>
   )
 }
