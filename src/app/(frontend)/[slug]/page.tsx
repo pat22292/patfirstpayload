@@ -1,5 +1,9 @@
 import { notFound } from 'next/navigation'
-import { getPayloadClient } from '../../../lib/payload'
+import { getPayloadClient } from '@/lib/payload'
+import { Page as PageType } from '../../../../components/types/payload'
+
+// import { payload } from '@/lib/payloadClient'
+
 import RenderBlocks from '../../../../components/RenderBlocks'
 
 
@@ -16,17 +20,21 @@ export default async function Page({ params }: PageProps) {
 
   const payload = await getPayloadClient()
 
-  const result = await payload.find({
+  const page: PageType | null = await payload.findOne({
     collection: 'pages',
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-    limit: 1,
+    where: { slug: { equals: slug } },
   })
+  // const result = await payload.findOne({
+  //   collection: 'pages',
+  //   where: {
+  //     slug: {
+  //       equals: slug,
+  //     },
+  //   },
+  //   limit: 1,
+  // })
 
-  const page = result.docs[0]
+  // const page = result.docs[0]
 
   if (!page) return notFound()
 
