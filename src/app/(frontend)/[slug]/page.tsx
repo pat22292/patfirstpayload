@@ -20,7 +20,7 @@ export default async function Page({ params }: PageProps) {
 
   const payload = await getPayloadClient()
 
-  const result = await payload.findOne({
+  const result = await payload.find({
     collection: 'pages',
     where: {
       slug: {

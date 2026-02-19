@@ -1,20 +1,11 @@
 import HeroBlock from './blocks/HeroBlock'
 import ContentBlock from './blocks/ContentBlock'
-import { PageBlock } from './types/payload'
 
-
-
-type BlockRendererProps = {
-  blocks: PageBlock[]
+type Props = {
+  blocks: any[]
 }
 
-const blocksMap: Record<string, React.FC<any>> = {
-  hero: HeroBlock,
-  contentBlock: ContentBlock,
-}
-
-
-export default function RenderBlocks({ blocks }: BlockRendererProps) {
+export default function RenderBlocks({ blocks }: Props) {
   if (!blocks || !blocks.length) return null
 
   return (
@@ -22,10 +13,10 @@ export default function RenderBlocks({ blocks }: BlockRendererProps) {
       {blocks.map((block, index) => {
         switch (block.blockType) {
           case 'hero':
-            return <HeroBlock heading={''} key={index} {...block} />
+            return <HeroBlock key={index} {...block} />
 
           case 'content':
-            return <ContentBlock text={undefined} key={index} {...block} />
+            return <ContentBlock key={index} {...block} />
 
           default:
             return null
