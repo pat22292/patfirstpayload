@@ -27,7 +27,7 @@ export default async function Page({ params }: Props) {
   return (
     <main>
       <h1>{page.title}</h1>
-      <h2>{page.slug}</h2>
+      {/*<h2>{page.slug}</h2>*/}
       <RenderBlocks blocks={page.layout} />
     </main>
   )
