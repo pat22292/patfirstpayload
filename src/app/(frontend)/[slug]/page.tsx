@@ -3,18 +3,24 @@ import { getPayloadClient } from '../../../lib/payload'
 import RenderBlocks from '../../../../components/RenderBlocks'
 
 
-type Props = {
-  params: { slug: string }
+// type Props = {
+//   params: { slug: string }
+// }
+
+type PageProps = {
+  params: Record<string, string>
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: PageProps) {
+  const slug = params.slug
+
   const payload = await getPayloadClient()
 
   const result = await payload.find({
     collection: 'pages',
     where: {
       slug: {
-        equals: params.slug,
+        equals: slug,
       },
     },
     limit: 1,
