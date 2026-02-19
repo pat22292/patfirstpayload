@@ -4,9 +4,7 @@ import RenderBlocks from '../../../../components/RenderBlocks'
 
 
 type Props = {
-  params: {
-    slug: string
-  }
+  params: any
 }
 
 export default async function Page({ params }: Props) {
@@ -14,11 +12,11 @@ export default async function Page({ params }: Props) {
 
   const result = await payload.find({
     collection: 'pages',
-    // where: {
-    //   slug: {
-    //     equals: params,
-    //   },
-    // },
+    where: {
+      slug: {
+        equals: params,
+      },
+    },
     limit: 1,
   })
 
