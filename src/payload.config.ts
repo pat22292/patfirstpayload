@@ -3,7 +3,7 @@ import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
-import { buildConfig } from 'payload'
+import { buildConfig, GlobalConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
@@ -14,8 +14,19 @@ import { Media } from './collections/Media'
 import { Products } from './collections/Products'
 import { HandleDelete, HandleUpload } from '@payloadcms/plugin-cloud-storage/types'
 import type { UploadApiResponse } from 'cloudinary'
+import { Header } from './globals/Header'
+import { Pages } from '@/collections/Pages'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+
+// const Header: GlobalConfig = {
+//   slug: 'header',
+//   label: 'Header Nav', // Optional: changes how it's displayed in the admin
+//   fields: [
+//     // Add fields for your logo, links, etc.
+//   ],
+// }
 
 //setting up clodinary CONFIG
 cloudinary.config({
@@ -98,7 +109,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Products],
+  collections: [Users, Media, Products, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -135,4 +146,5 @@ export default buildConfig({
 
     // storage-adapter-placeholder
   ],
+  globals: [Header],
 })

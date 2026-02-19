@@ -2,6 +2,8 @@ import React from 'react'
 import './styles.css'
 import { ThemeModeScript } from 'flowbite-react'
 import { Button, createTheme, ThemeProvider } from 'flowbite-react'
+import Header from './Header'
+import { getHeader } from './globalheader'
 
 const customTheme = createTheme({
   button: {
@@ -23,11 +25,12 @@ export const metadata = {
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
-
+  const header = await getHeader()
   return (
     <ThemeProvider theme={customTheme}>
       <html lang="en">
         <body>
+          <Header logo={header.logo} navigation={header.navigation} />
           {/*<ThemeModeScript />*/}
           <main>{children}</main>
         </body>
