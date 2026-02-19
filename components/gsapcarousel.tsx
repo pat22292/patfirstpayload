@@ -15,26 +15,26 @@ type Slide = {
 }
 
 type Product = {
-  "createdAt": string,
-  "updatedAt": string,
-  "alt":string,
-  "url": string,
-  "filename": string,
-  "mimeType": string,
-  "filesize": number,
-  "width": number,
-  "height": number,
-  "focalX": number,
-  "focalY": number,
-  "id": string,
-  "thumbnailURL": null
+  createdAt: string,
+  updatedAt: string,
+  alt:string,
+  url: string,
+  filename: string,
+  mimeType: string,
+  filesize: number,
+  width: number,
+  height: number,
+  focalX: number,
+  focalY: number,
+  id: string,
+  thumbnailURL: null
 }
 
 interface ChildProps {
   data: Product[] // Passing collection
 }
 
-const HeroSlider: React.FC<{ data: any[] }> = ({ data }) => {
+const HeroSlider: React.FC<{ data: Product[] }> = ({ data }) => {
   // export default function HeroSlider({ data  }: []) {
   const [slides, setSlides] = useState<Slide[]>([])
   const [active, setActive] = useState(0)
@@ -82,7 +82,7 @@ const HeroSlider: React.FC<{ data: any[] }> = ({ data }) => {
           ref={(el) => {
             if (el) slideRefs.current[i] = el
           }}
-          className="absolute inset-0 opacity-0"
+          className="absolute inset-0 opacity-0 "
         >
           <Image
             src={`https://res.cloudinary.com/dgd6bxkak/image/upload/v1/media/${slide.filename}`}
@@ -94,6 +94,7 @@ const HeroSlider: React.FC<{ data: any[] }> = ({ data }) => {
 
           <div className="absolute inset-0 flex items-center justify-center bg-black/40">
             <h1 className="text-white text-4xl font-bold">{slide.filename}</h1>
+            <p>{slide.thumbnailURL}</p>
           </div>
         </div>
       ))}

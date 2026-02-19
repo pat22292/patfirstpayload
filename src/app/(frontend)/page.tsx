@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { getPayload } from 'payload'
 import { Button } from 'flowbite-react'
 import HeroSlider from  '../../../components/gsapcarousel'
-
+import HeroSliderAutomatic from '../../../components/automaticGSAPCarousel'
 import React from 'react'
 import { fileURLToPath } from 'url'
 import gsap from 'gsap'
@@ -26,7 +26,7 @@ export default async function HomePage() {
     })
     return posts.docs
   }
-  console.log(products);
+
 
   return (
     <div className="home">
@@ -68,7 +68,8 @@ export default async function HomePage() {
       {/*    <code>app/(frontend)/page.tsx</code>*/}
       {/*  </a>*/}
       {/*</div>*/}
-      <HeroSlider data={products} />
+      {/*<HeroSlider data={products as []} />*/}
+      <HeroSliderAutomatic slides={products as []}/>
       {/*<div>*/}
       {/*/!*  *!/*/}
       {/*  {products.map((product) => (*/}
