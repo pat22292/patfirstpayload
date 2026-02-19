@@ -12,29 +12,25 @@ import RenderBlocks from '../../../../components/RenderBlocks'
 // }
 
 type PageProps = {
-  params: Record<string, string>
+  params: any
 }
 
 export default async function Page({ params }: PageProps) {
-  const slug = params.slug
+  const slug = await params.slug
 
   const payload = await getPayloadClient()
 
-  const page: PageType | null = await payload.findOne({
+  const result = await payload.findOne({
     collection: 'pages',
-    where: { slug: { equals: slug } },
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+    limit: 1,
   })
-  // const result = await payload.findOne({
-  //   collection: 'pages',
-  //   where: {
-  //     slug: {
-  //       equals: slug,
-  //     },
-  //   },
-  //   limit: 1,
-  // })
 
-  // const page = result.docs[0]
+  const page = result.docs[0]
 
   if (!page) return notFound()
 
