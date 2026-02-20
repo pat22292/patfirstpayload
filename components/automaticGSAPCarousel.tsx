@@ -94,7 +94,7 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
           className="absolute inset-0 flex items-center justify-center"
         >
           <img
-            src={`${slide.url}`}
+            src={`${slide.thumbnailURL}`}
             alt={slide.alt}
             className="absolute inset-0 h-full w-full object-cover"
           />
