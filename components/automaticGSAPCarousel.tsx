@@ -94,15 +94,15 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
           className="absolute inset-0 flex items-center justify-center"
         >
           <img
-            src={`https://res.cloudinary.com/dgd6bxkak/image/upload/v1/media/${slide.filename}`}
+            src={`${slide.url}`}
             alt={slide.alt}
             className="absolute inset-0 h-full w-full object-cover"
           />
 
           <div className="relative z-10 text-center text-white px-6">
-            <h1 className="text-4xl md:text-6xl font-bold">{slide.filename}</h1>
+            
 
-            {slide.height && <p className="mt-4 text-lg md:text-xl">{slide.width}</p>}
+            {/* {slide.height && <p className="mt-4 text-lg md:text-xl">{slide.width}</p>} */}
           </div>
 
           <div className="absolute inset-0 bg-black/40" />

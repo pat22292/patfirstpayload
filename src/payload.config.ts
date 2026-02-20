@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
 import { v2 as cloudinary } from 'cloudinary'
+import { cloudinaryStorage } from 'payload-cloudinary'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -120,29 +121,48 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    payloadCloudPlugin(),
-    cloudStoragePlugin({
-      collections: {
-        media: {
-          adapter: cloudinaryAdapter,
-          disableLocalStorage: true,
-          generateFileURL: ({ filename }) => {
-            // Since we uploaded the file with a "media/" prefix in its public_id,
-            // we include "media/" here to correctly generate the Cloudinary URL for the file.
-            return cloudinary.url(`media/${filename}`, { secure: true })
-          },
-        },
-        product: {
-          adapter: cloudinaryAdapter,
-          disableLocalStorage: true,
-          generateFileURL: ({ filename }) => {
-            // Since we uploaded the file with a "media/" prefix in its public_id,
-            // we include "media/" here to correctly generate the Cloudinary URL for the file.
-            return cloudinary.url(`media/${filename}`, { secure: true })
-          },
-        },
+    cloudinaryStorage({
+
+      config: {
+
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
+        api_key: process.env.CLOUDINARY_API_KEY!,
+        api_secret: process.env.CLOUDINARY_API_SECRET!,
+
       },
+
+      collections: {
+
+        media: true,
+        product:  true,
+      },
+
+      folder: 'payload-media',
+
     }),
+    // payloadCloudPlugin(),
+    // cloudStoragePlugin({
+    //   collections: {
+    //     media: {
+    //       adapter: cloudinaryAdapter,
+    //       disableLocalStorage: true,
+    //       generateFileURL: ({ filename }) => {
+    //         // Since we uploaded the file with a "media/" prefix in its public_id,
+    //         // we include "media/" here to correctly generate the Cloudinary URL for the file.
+    //         return cloudinary.url(`media/${filename}`, { secure: true })
+    //       },
+    //     },
+    //     product: {
+    //       adapter: cloudinaryAdapter,
+    //       disableLocalStorage: true,
+    //       generateFileURL: ({ filename }) => {
+    //         // Since we uploaded the file with a "media/" prefix in its public_id,
+    //         // we include "media/" here to correctly generate the Cloudinary URL for the file.
+    //         return cloudinary.url(`media/${filename}`, { secure: true })
+    //       },
+    //     },
+    //   },
+    // }),
 
     // storage-adapter-placeholder
   ],
