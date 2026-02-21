@@ -17,6 +17,9 @@ import { HandleDelete, HandleUpload } from '@payloadcms/plugin-cloud-storage/typ
 import type { UploadApiResponse } from 'cloudinary'
 import { Header } from './globals/Header'
 import { Pages } from '@/collections/Pages'
+import Logo from './admin/Logo'
+import SaveButton from './admin/SaveButton'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -104,11 +107,21 @@ const cloudinaryAdapter = () => ({
 
 
 export default buildConfig({
+
   admin: {
+
     user: Users.slug,
     importMap: {
-      baseDir: path.resolve(dirname),
     },
+     components: {
+      edit :{
+         SaveButton: { component: SaveButton },
+      },  
+    graphics: {
+      Logo,
+    },
+  
+  }  as any,
   },
   collections: [Users, Media, Products, Pages],
   editor: lexicalEditor(),

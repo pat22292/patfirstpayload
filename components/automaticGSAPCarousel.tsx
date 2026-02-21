@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from 'gsap'
+import Link from "next/link";
 
 type Product = {
   createdAt: string
@@ -86,8 +87,18 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
   return (
     <div className="relative h-[70vh] w-full overflow-hidden">
       {slides.map((slide, index) => (
+           <Link  key={slide.id} href={{
+
+                pathname: '/product',
+                query: {
+                  id: slide.id,
+                },
+
+              }}
+              >
         <div
-          key={slide.id}
+        // onClick={() => {console.log(slide.id)}}
+         
           ref={(el) => {
             if (el) slidesRef.current[index] = el
           }}
@@ -107,6 +118,7 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
 
           <div className="absolute inset-0 bg-black/40" />
         </div>
+        </Link>
       ))}
     </div>
   )
