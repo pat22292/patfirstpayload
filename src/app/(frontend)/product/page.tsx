@@ -9,10 +9,10 @@ type Props = {
 }
 
 
-async function getData(id: any) {
+async function getData(param: any) {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
- const product  = await payload.findByID({ collection: 'product', id: `${id}`})
+ const product  = await payload.findByID({ collection: 'product', id: `${param.id}`})
   // const res = await fetch(`${process.env.API_URL}product/${id}`)
 
 
@@ -21,8 +21,8 @@ async function getData(id: any) {
 
 
 export default async function Product({ searchParams }: Props) {
-  const id = await searchParams?.id;
-  const product = await getData(id);
+  const { param } = await searchParams;
+  const product = await getData(param);
 
   return (
     <div className="grid place-items-center h-screen">
