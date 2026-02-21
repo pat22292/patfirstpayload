@@ -2,12 +2,11 @@
 
 import { getPayload } from 'payload'
 import config from '@/payload.config'
-import { useSearchParams, useParams } from 'next/navigation';
 
 
-// type Props = {
-//   searchParams: { [key: string]: string | string[] | undefined }
-// }
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
 
 async function getData(id: any) {
@@ -21,15 +20,13 @@ async function getData(id: any) {
 }
 
 
-export default async function Product({  }) {
-  const searchParams = useSearchParams();
-   const query = await searchParams.get('id');
+export default async function Product({ searchParams }: Props) {
+  const id = await searchParams?.id;
+  const product = await getData(id);
 
- const product = await getData(query);
-
-console.log(product)
   return (
     <div className="grid place-items-center h-screen">
+
           <h1>{product.filename}</h1>
       <div className=' inset-0 flex items-center justify-center'>
 
