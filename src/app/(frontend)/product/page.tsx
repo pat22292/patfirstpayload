@@ -1,5 +1,4 @@
 
-'use client'
 
 import { getPayload } from 'payload'
 import config from '@/payload.config'
@@ -24,7 +23,7 @@ async function getData(id: any) {
 
 export default async function Product({  }) {
   const searchParams = useSearchParams();
-   const query = searchParams.get('id');
+   const query = await searchParams.get('id');
 
  const product = await getData(query);
 
