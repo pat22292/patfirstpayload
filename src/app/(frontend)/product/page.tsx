@@ -1,10 +1,14 @@
+
+'use client'
+
 import { getPayload } from 'payload'
 import config from '@/payload.config'
+import { useSearchParams, useParams } from 'next/navigation';
 
 
-type Props = {
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+// type Props = {
+//   searchParams: { [key: string]: string | string[] | undefined }
+// }
 
 
 async function getData(id: any) {
@@ -18,8 +22,11 @@ async function getData(id: any) {
 }
 
 
-export default async function Product({ searchParams }: Props) {
- const product = await getData(searchParams.id);
+export default async function Product({  }) {
+  const searchParams = useSearchParams();
+   const query = searchParams.get('id');
+
+ const product = await getData(query);
 
 console.log(product)
   return (
