@@ -112,13 +112,13 @@ export default buildConfig({
 
     user: Users.slug,
      components: {
-      Logo,
+      // Logo: async () => (await import('@/admin/Logo')).default,
       edit :{
          SaveButton: { component: SaveButton },
       },  
-    // graphics: {
-    //   Logo,
-    // },
+    graphics: {
+      Logo,
+    },
   
   }  as any,
   },

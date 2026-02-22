@@ -43,7 +43,7 @@ export default async function Product({ searchParams,  }: PageProps) {
 
 
   return (
-    <div className="grid place-items-center">
+    <div className="grid place-items-center w-screen">
    
 
           <h1>{product.filename}</h1>
