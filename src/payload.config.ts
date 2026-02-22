@@ -111,15 +111,14 @@ export default buildConfig({
   admin: {
 
     user: Users.slug,
-    importMap: {
-    },
      components: {
+      Logo,
       edit :{
          SaveButton: { component: SaveButton },
       },  
-    graphics: {
-      Logo,
-    },
+    // graphics: {
+    //   Logo,
+    // },
   
   }  as any,
   },

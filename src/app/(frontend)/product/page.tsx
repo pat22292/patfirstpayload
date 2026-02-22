@@ -1,33 +1,42 @@
-
-
 import { getPayload } from 'payload'
 import config from '@/payload.config'
+import { use } from 'react';
 
 
-type Props = {
-  searchParams: { [key: string]: string | string[] | undefined }
+type PageProps = {
+  searchParams: Promise<{
+    id?: string
+  }>
 }
 
+export default async function Product({ searchParams }: PageProps) {
+   const { id } = await searchParams
 
-async function getData(param: any) {
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
- const product  = await payload.findByID({ collection: 'product', id: `${param.id}`})
-  // const res = await fetch(`${process.env.API_URL}product/${id}`)
+  if (!id) {
+    return <div>No product id provided</div>
+  }
+  const payload =  getPayload({
+    config,
+  })
 
+  let product
 
-  return product;
-}
+  try {
+    product =  (await payload).findByID({
+      collection: 'product',
+      id,
+    })
+  } catch (e) {
+    return <div>Product not found</div>
+  }
+//  const product  = await payload.findByID({ collection: 'product', id: `${id}`})
 
-
-export default async function Product({ searchParams }: Props) {
-  const { param } = await searchParams;
-  const product = await getData(param);
 
   return (
-    <div className="grid place-items-center h-screen">
-
-          <h1>{product.filename}</h1>
+    <div className="grid place-items-center">
+      <h1></h1>
+{/* 
+          // <h1>{product.filename}</h1>
       <div className=' inset-0 flex items-center justify-center'>
 
           <img
@@ -35,7 +44,7 @@ export default async function Product({ searchParams }: Props) {
             alt={product.alt}
             className=" h-full object-cover"
           />
-      </div>
+      </div> */}
   
     </div>
   )
