@@ -4,17 +4,18 @@ import RenderBlocks from '../components/RenderBlocks'
 
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export default async function Page({ params }: Props) {
+  const { slug } = await params
   const payload = await getPayloadClient()
 
   const result = await payload.find({
     collection: 'pages',
     where: {
       slug: {
-        equals: params.slug,
+        equals: slug,
       },
     },
     limit: 1,

@@ -27,13 +27,15 @@ export default function HeroBlock({ heading, subheading, backgroundImage }: Prop
     <section className="hero">
       <h1>{heading}</h1>
       {subheading && <p className='text-white'>{subheading}</p>}
-          <Image
-            src={`https://res.cloudinary.com/dgd6bxkak/image/upload/v1/media/${backgroundImage?.filename}`}
-            alt='2'
-            height={200}
-            width={200}
-            unoptimized
-          />
+      {backgroundImage && (
+        <Image
+          src={`https://res.cloudinary.com/dgd6bxkak/image/upload/v1/media/${backgroundImage.filename}`}
+          alt={backgroundImage.alt || 'Hero image'}
+          height={backgroundImage.height}
+          width={backgroundImage.width}
+          unoptimized
+        />
+      )}
     </section>
   )
 }

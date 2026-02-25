@@ -13,4 +13,5 @@ export const Products: CollectionConfig = {
     },
   ],
   upload: true,
+  orderable: true,
 }
