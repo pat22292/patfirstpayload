@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 import {getPayloadClient}from '../src/lib/payload'
-import RenderBlocks from '../components/RenderBlocks'
 
 
 type Props = {
