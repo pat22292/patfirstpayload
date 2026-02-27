@@ -46,7 +46,7 @@ export default async function Product({ searchParams,  }: PageProps) {
     <div className="grid place-items-center w-screen">
    
 
-          <h1>{product.filename}</h1>
+          <h1>{product.Title}</h1>
       <div className=' inset-0 flex items-center justify-center'>
 
           <img

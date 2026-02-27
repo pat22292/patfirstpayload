@@ -1,6 +1,5 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig, GlobalConfig } from 'payload'
@@ -18,7 +17,7 @@ import type { UploadApiResponse } from 'cloudinary'
 import { Header } from './globals/Header'
 import { Pages } from '@/collections/Pages'
 import Logo from './admin/Logo'
-import SaveButton from './admin/SaveButton'
+// import SaveButton from './admin/SaveButton'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -109,13 +108,13 @@ const cloudinaryAdapter = () => ({
 export default buildConfig({
 
   admin: {
-
+theme: 'light',
     user: Users.slug,
      components: {
       // Logo: async () => (await import('@/admin/Logo')).default,
-      edit :{
-         SaveButton: { component: SaveButton },
-      },  
+      // edit :{
+      //    SaveButton: { component: SaveButton },
+      // },  
     graphics: {
       Logo,
     },

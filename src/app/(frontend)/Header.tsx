@@ -38,7 +38,7 @@ export default function Header({ logo, navigation }: HeaderProps) {
           <ul>
             {navigation?.map((item) => (
               <Link
-                className="text-sm text-gray-700 hover:text-black mx-2"
+                className="text-sm  hover:text-blue-600 mx-2"
                 key={item.id || item.url}
                 href={item.url}
               >

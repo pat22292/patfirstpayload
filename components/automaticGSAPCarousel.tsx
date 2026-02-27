@@ -107,7 +107,7 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
           <img
             src={`${slide.thumbnailURL}`}
             alt={slide.alt}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover bg-transparent"
           />
 
           <div className="relative z-10 text-center text-white px-6">
@@ -116,7 +116,7 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
             {/* {slide.height && <p className="mt-4 text-lg md:text-xl">{slide.width}</p>} */}
           </div>
 
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 " />
         </div>
         </Link>
       ))}

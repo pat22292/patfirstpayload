@@ -233,6 +233,8 @@ export interface Media {
  */
 export interface Product {
   id: string;
+  _order?: string | null;
+  Title?: string | null;
   alt: string;
   /**
    * Cloudinary Media Information
@@ -494,6 +496,8 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "product_select".
  */
 export interface ProductSelect<T extends boolean = true> {
+  _order?: T;
+  Title?: T;
   alt?: T;
   cloudinary?:
     | T

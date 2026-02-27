@@ -6,6 +6,11 @@ export const Products: CollectionConfig = {
     read: () => true,
   },
   fields: [
+     {
+      name: 'Title',
+      type: 'text',
+      required: false,
+    },
     {
       name: 'alt',
       type: 'text',
