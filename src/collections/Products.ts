@@ -16,6 +16,13 @@ export const Products: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'optionalJsonField',
+      type: 'json',
+      label: 'Optional JSON Field',
+      // By default, this field is not required and thus nullable
+      required: false, // This is implicit if omitted, but can be explicit
+    },
   ],
   upload: true,
   orderable: true,

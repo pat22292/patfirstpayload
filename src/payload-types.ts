@@ -236,6 +236,15 @@ export interface Product {
   _order?: string | null;
   Title?: string | null;
   alt: string;
+  optionalJsonField?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   /**
    * Cloudinary Media Information
    */
@@ -499,6 +508,7 @@ export interface ProductSelect<T extends boolean = true> {
   _order?: T;
   Title?: T;
   alt?: T;
+  optionalJsonField?: T;
   cloudinary?:
     | T
     | {
