@@ -17,7 +17,7 @@ export const Products: CollectionConfig = {
       required: true,
     },
     {
-      name: 'optionalJsonField',
+      name: 'variation',
       type: 'json',
       label: 'Optional JSON Field',
       // By default, this field is not required and thus nullable
