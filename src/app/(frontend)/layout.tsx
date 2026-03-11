@@ -8,14 +8,13 @@ import { Anton, Roboto } from 'next/font/google';
 import SmoothScrollProvider from "../../../components/SmoothScroll"
 
 
-export const anton = Anton({
-  weight: ['400'], // Anton only has a 400 weight
+const anton = Anton({
+  weight: '400',
   subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-anton', // Optional: for CSS variable usage
+  variable: '--font-anton',
 });
 
-export const roboto = Roboto({
+const roboto = Roboto({
   weight: ['400', '700'], // Specify desired weights
   subsets: ['latin'],
   display: 'swap',

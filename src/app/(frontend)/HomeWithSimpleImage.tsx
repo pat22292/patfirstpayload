@@ -40,7 +40,7 @@ const HomeWithSimpleImage = () => {
     //     }, { scope: ref })
  useGSAP(
         () => {
-let tl = gsap.timeline({
+const tl = gsap.timeline({
   scrollTrigger: {
     // markers: true,
     // trigger: ".slanted-image",
