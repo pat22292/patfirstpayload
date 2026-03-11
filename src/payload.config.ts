@@ -115,9 +115,9 @@ theme: 'light',
       // edit :{
       //    SaveButton: { component: SaveButton },
       // },  
-    graphics: {
-      Logo,
-    },
+    // graphics: {
+    //   Logo,
+    // },
   
   }  as any,
   },

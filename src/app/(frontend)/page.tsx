@@ -5,6 +5,8 @@ import React from 'react'
 
 import config from '@/payload.config'
 import HomePageClient from './homePageView'
+import HomeWithSimpleImage from './HomeWithSimpleImage'
+  import GsapTest from './gsaptest'
 // import './styles.css'
 
 export default async function HomePage() {
@@ -22,10 +24,32 @@ export default async function HomePage() {
 
 
   return (
-    <div className="home">
-      {/* <div> */}
+    // <div className="home">
+      <div >
+        {/* <GsapTest /> */}
         {/* <HomePageClient /> */}
-        <div className="links">
+    <nav className="flex absolute w-screen items-center justify-between p-4 bg-transparent">
+  
+  <div className="text-2xl font-[anton]  text-[#1ce585]">
+    BRAND
+  </div>
+  
+  
+  <div className="hidden font-[roboto] md:flex text-lg items-center gap-6 text-[white]">
+    <a href="#" className="hover:text-black">Home</a>
+    <a href="#" className="hover:text-black">About</a>
+    <a href="#" className="hover:text-black">Services</a>
+  </div>
+  
+  
+  <a href="#" className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm">
+    Contact
+  </a>
+</nav>
+<HomeWithSimpleImage/>
+
+
+        <div className="links p-5 flex text-center justify-center">
           <a
             className="admin"
             href={payloadConfig.routes.admin}
@@ -43,7 +67,10 @@ export default async function HomePage() {
             Documentation
           </a>
         </div>
-      <HeroSliderAutomatic slides={products as []}/>
+      
+ <HeroSliderAutomatic slides={products as []}/>
+      
+     
       
     </div>
   )

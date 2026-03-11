@@ -4,22 +4,56 @@
 
 
 :root {
-  --font-mono: 'Roboto Mono', monospace;
+  --font-anton: var(--font-anton), sans-serif;
+  --font-roboto: var(--font-roboto), sans-serif;
 }
 
-* {
+h1, h2, h3 {
+  /* Apply Anton to headings */
+  font-family: var(--font-anton);
+}
+
+body {
+  /* Apply Roboto as the body font */
+  font-family: var(--font-roboto);
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    a {
+      text-decoration: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .admin {
+      color: rgb(0, 0, 0);
+      background: rgb(1000, 1000, 1000);
+      border: 1px solid rgb(0, 0, 0);
+    }
+
+    .docs {
+      color: rgb(1000, 1000, 1000);
+      background: rgb(0, 0, 0);
+      border: 1px solid rgb(1000, 1000, 1000);
+    }
+  }
+/* * {
   box-sizing: border-box;
-}
+} */
 
-html {
+/* html {
   font-size: 18px;
   line-height: 32px;
 
-  /* background: rgb(0, 0, 0); */
+  background: rgb(0, 0, 0);
   -webkit-font-smoothing: antialiased;
-}
+} */
 
-html,
+/* html,
 body,
 #app {
   height: 100%;
@@ -30,10 +64,10 @@ body {
   font-size: 18px;
   line-height: 32px;
 
-  margin: 0;
+  margin: 0; */
   /* color: rgb(1000, 1000, 1000); */
 
-  @media (max-width: 1024px) {
+  /* @media (max-width: 1024px) {
     font-size: 15px;
     line-height: 24px;
   }
@@ -194,7 +228,7 @@ svg {
   position: absolute;
   top: 0;
   left: 0;
-  /* color: white; */
+  color: white;
   font-size: 50px;
   display: flex;
   justify-content: center;
@@ -204,7 +238,7 @@ svg {
 
 .slide:first-child {
   clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%);
-}
+} */
 /*section div, header {*/
 /*  display: flex;*/
 /*  align-items: center;*/
@@ -268,4 +302,4 @@ svg {
 /*}*/
 /*section:nth-child(6) div {*/
 /*  background: #D7601B;*/
-/*}*/
+/* } */

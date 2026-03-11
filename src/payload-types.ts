@@ -236,7 +236,7 @@ export interface Product {
   _order?: string | null;
   Title?: string | null;
   alt: string;
-  optionalJsonField?:
+  variation?:
     | {
         [k: string]: unknown;
       }
@@ -508,7 +508,7 @@ export interface ProductSelect<T extends boolean = true> {
   _order?: T;
   Title?: T;
   alt?: T;
-  optionalJsonField?: T;
+  variation?: T;
   cloudinary?:
     | T
     | {

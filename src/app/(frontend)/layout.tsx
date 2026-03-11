@@ -4,6 +4,23 @@ import { ThemeModeScript } from 'flowbite-react'
 import { Button, createTheme, ThemeProvider } from 'flowbite-react'
 import Header from './Header'
 import { getHeader } from './globalheader'
+import { Anton, Roboto } from 'next/font/google';
+import SmoothScrollProvider from "../../../components/SmoothScroll"
+
+
+export const anton = Anton({
+  weight: ['400'], // Anton only has a 400 weight
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-anton', // Optional: for CSS variable usage
+});
+
+export const roboto = Roboto({
+  weight: ['400', '700'], // Specify desired weights
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto', // Optional: for CSS variable usage
+});
 
 const customTheme = createTheme({
   button: {
@@ -18,6 +35,7 @@ const customTheme = createTheme({
 })
 
 
+
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
@@ -28,13 +46,20 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const header = await getHeader()
   return (
     <ThemeProvider theme={customTheme}>
-      <html lang="en">
-        <body>
-          <Header logo={header.logo} navigation={header.navigation} />
+      <html lang="en"  className={`${anton.variable} ${roboto.variable} antialiased `}>
+        <body suppressHydrationWarning={true}
+        className={`${anton.variable} ${roboto.variable} antialiased`}
+        >
+          {/* <Header logo={header.logo} navigation={header.navigation} /> */}
           {/*<ThemeModeScript />*/}
-          <main>{children}</main>
+          <main>
+            <SmoothScrollProvider>
+            {children}
+            </SmoothScrollProvider>
+            </main>
         </body>
       </html>
     </ThemeProvider>
   )
 }
+

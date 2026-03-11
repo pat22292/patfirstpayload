@@ -85,7 +85,7 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
   }, [slides.length, interval]);
 
   return (
-    <div className="relative h-[70vh] w-full overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden">
       {slides.map((slide, index) => (
            <Link  key={slide.id} href={{
 
@@ -107,7 +107,7 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
           <img
             src={`${slide.thumbnailURL}`}
             alt={slide.alt}
-            className="absolute inset-0 h-full w-full object-cover bg-transparent"
+            className=" inset-0 w-[500] h-[500]  object-fill left-1/2 transform "
           />
 
           <div className="relative z-10 text-center text-white px-6">
@@ -116,7 +116,7 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
             {/* {slide.height && <p className="mt-4 text-lg md:text-xl">{slide.width}</p>} */}
           </div>
 
-          <div className="absolute inset-0 " />
+          {/* <div className="absolute inset-0 " /> */}
         </div>
         </Link>
       ))}

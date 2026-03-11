@@ -34,7 +34,7 @@ export default function HomePageClient() {
               scrub: true,
               pin: true,
               start: "top top",
-              end: `${window.innerHeight * 5  }`, // Adjust end point based on viewport height
+              end: `${window.innerHeight * 10 }`, // Adjust end point based on viewport height
                         },
             scaleX: 0, 
             transformOrigin: "left center", 
@@ -46,7 +46,6 @@ export default function HomePageClient() {
        scrollTrigger: {
              
               trigger: ".greetext",
-             markers: true,
               scrub: true,
               // pin: true,
               start: "top top",
@@ -61,13 +60,13 @@ export default function HomePageClient() {
             scrollTrigger: {
              
               trigger: "#typeWriterText",
-              toggleClass: "-translate-x-1/2",
+              toggleClass: "sm:-translate-x-1/2",
               scrub: true,
               // pin: true,
               // start: "+0%",
             },
-            duration: .05,
-            ease: "slow",
+            duration: 20,
+            ease: "none",
             stagger: 1
           });
 
@@ -77,11 +76,11 @@ export default function HomePageClient() {
               scrub: true,
               // pin: true,
               start: `+=${window.innerHeight * 1}%`,
-              end: "+=200%"
+              end: "+=150%"
             },
-            duration:.01,
+            duration:20,
             text: " Designer.",
-            ease: "power2",
+            ease: "slow",
             stagger: 1
           });
            gsap.to(".textKo", {
@@ -89,12 +88,12 @@ export default function HomePageClient() {
               trigger: ".textKo",
               scrub: true,
               // pin: true,
-              start: `+=${window.innerHeight * 2}%`,
-              end: "+=100%"
+              start: `+${window.innerHeight * 2}%`,
+              end: "+=150%"
             },
-            duration:.1,
+            duration: 20,
             text: " Web/API Dev.",
-            ease: "power2",
+            ease: "slow",
             stagger: 1
           });
            gsap.to(".textKo", {
@@ -102,12 +101,28 @@ export default function HomePageClient() {
               trigger: ".textKo",
               scrub: true,
               // pin: true,
-              start: `+=${window.innerHeight * 3}%`,
-              end: "+=50%"
+              start: `+${window.innerHeight * 3}%`,
+              end: "+=150%"
             },
-            duration:.1,
+            duration: 20,
             text: " Mobile Dev.",
-            ease: "none",
+            ease: "slow",
+            stagger: 1
+          });
+
+              gsap.from(".slanted-text", {
+            scrollTrigger: {
+              markers: true,
+              trigger: ".slanted-text",
+              scrub: true,
+              // pin: true,
+              start: "bottom bottom",
+              end: "+=70%",
+            },
+            duration: 10,
+            translateX: "-50%",
+            ease: "slow",
+            stagger: 1
           });
 // ScrollTrigger.create({
 // 	trigger: '#id',
@@ -132,9 +147,9 @@ export default function HomePageClient() {
 
 return (
   <div ref={ref}>
-   <section  className="panel orange text-gray-900 md:grid md:grid-cols-2 hidden h-screen justify-center items-center ">
+   <section  className="panel orange text-gray-900 sm:grid sm:grid-cols-2   h-screen justify-center items-center ">
      
-      <div className='text-center  md:col-span-1 col-span-1   flex items-center justify-center'>
+      <div className='text-center sm:col-span-1 flex items-center justify-center'>
         {/* <Image
                                             src="file.svg"
                                             // loader={imageLoader}
@@ -146,24 +161,24 @@ return (
                                         /> */}
       {/* <Image */}
       </div>
-  <div id='typeWriterText' className='text-center transition-transform duration-300 ease-in-out  -translate-x-1/2  md:col-span-1 col-span-1   content-center place-items-center h-screen justify-center items-center  '>
+  <div id='typeWriterText' className='text-center transition-transform duration-300 ease-in-out  sm:-translate-x-1/2  md:col-span-1 col-span-1   content-center place-items-center h-screen justify-center items-center  '>
 
     <div className='whole-text  h-screen flex items-center justify-center  '>
     
-      <h1 className='text-8xl font-akshar     font-black  drop-shadow-xl md:inline-block hidden'>
-        <span className="greetext font-akshar text-8xl   font-black "> Hi! I'm Patrick.</span>
-         <span className="textKo font-akshar text-8xl   font-black ">  </span>
-      <span className="blinking-cursor">|</span>
-      <button onClick={() => {console.log(window.innerHeight)}} className='text-2xl font-extrabold drop-shadow-xl inline-block '>Click Me
-     </button>
+      <h1 className='font-akshar font-black leading-32  drop-shadow-xl md:inline-block'>
+        <span className="greetext sm:text-9xl text-6xl font-black "> Hi! I'm Patrick.</span>
+         <span className="textKo sm:text-9xl text-6xl font-black ">  </span>
+      {/* <span className="blinking-cursor">|</span> */}
+      {/* <button onClick={() => {console.log(window.innerHeight)}} className='text-2xl font-extrabold drop-shadow-xl inline-block '>Click Me
+     </button> */}
       </h1>
     
 
-      <h1  className='text-2xl font-extrabold drop-shadow-xl md:hidden inline-block '>Hi, I can be a  
+      {/* <h1  className='text-2xl font-extrabold drop-shadow-xl md:hidden inline-block '>Hi, I can be a  
         
         <span className="textKoSM text-2xl font-extrabold">  </span>
      <span className="blinking-cursor">|</span>
-     </h1>
+     </h1> */}
 
     </div>
     <span className="line line-2  "></span>
@@ -178,6 +193,41 @@ return (
     </div> 
     </div>
   </section>
+  
+  <section className='slante-text-container  -mt-[50%] bg-amber-200  h-screen relative '>
+
+ 
+
+
+      <div className='relative w-full  h-screen bg-transparent overflow-hidden flex items-center justify-center'>
+      <div className= 'absolute h-25   -mt-80 w-[200%] -rotate-12 text-blue-500 opacity-80 z-50 bg-black flex items-center justify-center' >
+<span className='slanted-text text-white text-6xl font-black'>THIS IS THE FIRST SLANTED TEXT IN THIS WEBSITE, DO YOU WANT ONE</span>
+      </div>
+{/* <svg className='absolute w-[200%]  text-blue-500 opacity-80 z-50'  width="4966" height="1333" viewBox="0 0 4966 1333" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="4997.65" height="341.714" transform="matrix(0.979873 -0.19962 -0.19962 -0.979873 68.2129 1332.46)" fill="black"/>
+<rect x="10" y="10" width="180" height="100" fill="#4CAF50" stroke="black" strokeWidth="2" />
+  <text 
+    x="1000" 
+    y="65" 
+    fontFamily="Arial, sans-serif" 
+    fontSize="20" 
+    fill="white" 
+    textAnchor="middle" 
+    dominantBaseline="middle">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum maiores ab consequatur? Ipsam at necessitatibus facilis. Enim dolorem quisquam saepe? Tenetur, nobis. Eaque incidunt nemo debitis. Ipsum incidunt modi cumque.
+
+  </text>
+</svg> */}
+
+
+        </div>
+
+
+{/* <span className='text-8xl  w-[500%]   text-white  font-black text-center'>THIS IS A COOL APP FROM MY PREVIOUS PROJECTS.</span> */}
+    
+    
+   
+</section>
   </div>
 )
 }
