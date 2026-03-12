@@ -71,7 +71,7 @@ tl.to(".slanted-image", {
 
   return (
     <div ref={ref} className='bg-[#00592b]'>
-    <section  className=' flex w-screen h-screen  items-center justify-center '>
+    <section  className=' flex w-full h-screen items-center justify-center '>
 
       
 
@@ -82,7 +82,7 @@ tl.to(".slanted-image", {
         </div>
        
     </section>
-    <section className=' flex w-screen h-screen  items-center justify-center'>
+    <section className=' flex w-full h-screen items-center justify-center'>
          {/* <img className='slanted-image w-[300] h-[180] z-0 object-cover  mx-auto absolute -rotate-12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' src="/pexels-divinetechygirl-1181675.jpg" alt="Image" /> */}
        {/* <iframe
         src={`https://res.cloudinary.com/dgd6bxkak/video/upload/v1773197174/5240956-hd_1920_1080_30fps_cgbjy0.mp4`}
@@ -94,10 +94,10 @@ tl.to(".slanted-image", {
         <video className='slanted-image shadow-lg shadow-black  w-[300] h-[180] z-0 object-cover  mx-auto absolute -rotate-12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' autoPlay muted loop>
           <source src={`https://res.cloudinary.com/dgd6bxkak/video/upload/v1773213492/14482698_1920_1080_25fps_hezkzr.mp4`} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>x
+        </video>
          
     </section>
-    <section className=' w-screen h-screen  flex items-center justify-center'>
+    <section className=' w-full h-screen  flex items-center justify-center'>
 <h1>Next.js</h1>
     </section>
       </div>

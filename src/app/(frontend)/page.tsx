@@ -25,10 +25,10 @@ export default async function HomePage() {
 
   return (
     // <div className="home">
-      <div >
+      <div className=''>
         {/* <GsapTest /> */}
         {/* <HomePageClient /> */}
-    <nav className="flex absolute w-screen items-center justify-between p-4 bg-transparent">
+    <nav className="flex absolute top-0 inset-x-0 items-center  justify-between p-4 bg-transparent">
   
   <div className="text-2xl font-[anton]  text-[#1ce585]">
     BRAND
@@ -46,10 +46,13 @@ export default async function HomePage() {
     Contact
   </a>
 </nav>
+
 <HomeWithSimpleImage/>
 
 
-        <div className="links p-5 flex text-center justify-center">
+
+
+        {/* <div className="links p-5 flex text-center justify-center">
           <a
             className="admin"
             href={payloadConfig.routes.admin}
@@ -66,9 +69,9 @@ export default async function HomePage() {
           >
             Documentation
           </a>
-        </div>
+        </div> */}
       
- <HeroSliderAutomatic slides={products as []}/>
+ {/* <HeroSliderAutomatic slides={products as []}/> */}
       
      
       
