@@ -75,10 +75,10 @@ tl.to(".slanted-image", {
 
       
 
-        <div className=' flex-col font-[anton] text-center leading-[.9] text-[200px] text-[#1ce585]'>
- <span className='-z-10 text-shadow-lg/20' >TIME TO MEET</span><br/>
+        <div className=' flex-col font-[anton] text-center leading-[.9] sm:text-[200px] text-[50px] text-[#1ce585] text-shadow-lg/20'>
+ <span className='-z-10 ' >TIME TO MEET</span><br/>
 
-        <span className='z-50 relative text-shadow-lg/20'>YOUR SUCCESS</span>
+        <span className='z-50 relative'>YOUR SUCCESS</span>
         </div>
        
     </section>
@@ -91,7 +91,7 @@ tl.to(".slanted-image", {
         allow="autoplay; mute; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe> */}
-        <video className='slanted-image shadow-lg shadow-black  w-[300] h-[180] z-0 object-cover  mx-auto absolute -rotate-12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' autoPlay muted loop>
+        <video className='slanted-image shadow-lg shadow-black  sm:w-[300] sm:h-[180] w-[80] h-[50] z-0 object-cover  mx-auto absolute -rotate-12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' autoPlay muted loop>
           <source src={`https://res.cloudinary.com/dgd6bxkak/video/upload/v1773213492/14482698_1920_1080_25fps_hezkzr.mp4`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
