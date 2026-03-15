@@ -85,7 +85,8 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
   }, [slides.length, interval]);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden flex justify-center items-center">
+      
       {slides.map((slide, index) => (
            <Link  key={slide.id} href={{
 
