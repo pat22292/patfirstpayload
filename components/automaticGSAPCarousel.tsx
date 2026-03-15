@@ -107,7 +107,7 @@ export default function HeroSliderAutomatic({ slides,interval = 5000,}: Props) {
           <img
             src={`${slide.thumbnailURL}`}
             alt={slide.alt}
-            className=" inset-0 w-[500] h-[500]  object-fill left-1/2 transform "
+            className=" inset-0 w-[500] h-[500]  object-cover left-1/2 transform "
           />
 
           <div className="relative z-10 text-center text-white px-6">

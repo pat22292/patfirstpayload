@@ -47,13 +47,14 @@ const tl = gsap.timeline({
     scrub: true,
     pin: true,
     start: 'top top', // Start animation when the top of the trigger hits the center of the viewport
-    end: `${window.innerHeight  }` , // End animation when the bottom of the trigger hits the top of the viewport
+    end: `${window.innerHeight * 2 }` , // End animation when the bottom of the trigger hits the top of the viewport
   }
 });
 
-tl.to(".slanted-image", {
+
+             tl.to(".slanted-image", {
   // rotate : .15,
-  translateY: "+=480%",
+  translateY:  `${window.innerHeight}`,
   // scale:6,
   ease: "ease.inOut",
   duration: 5,
@@ -61,7 +62,23 @@ tl.to(".slanted-image", {
 tl.to(".slanted-image", {
   rotate : .15,
   // translateY: "+=550%",
-  scale:5,
+  scale: `${window.innerWidth / window.innerHeight * 3}`,
+  ease: " ease.inOut",
+  duration: 5,
+})
+            
+
+tl.to(".slanted-image", {
+  // rotate : .15,
+  translateY:  `${window.innerHeight}`,
+  // scale:6,
+  ease: "ease.inOut",
+  duration: 5,
+})
+tl.to(".slanted-image", {
+  rotate : .15,
+  // translateY: "+=550%",
+  scale: `${window.innerWidth / window.innerHeight * 3}`,
   ease: " ease.inOut",
   duration: 5,
 })
@@ -75,7 +92,7 @@ tl.to(".slanted-image", {
 
       
 
-        <div className=' flex-col font-[anton] text-center leading-[.9] sm:text-[200px] text-[50px] text-[#1ce585] text-shadow-lg/20'>
+        <div className=' flex-col font-[anton] text-center leading-[.9] sm:text-[200px] md:text-[150px] text-[100px] text-[#1ce585] text-shadow-lg/20'>
  <span className='-z-10 ' >TIME TO MEET</span><br/>
 
         <span className='z-50 relative'>YOUR SUCCESS</span>
@@ -91,7 +108,7 @@ tl.to(".slanted-image", {
         allow="autoplay; mute; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe> */}
-        <video className='slanted-image shadow-lg shadow-black  sm:w-[300] sm:h-[180] w-[80] h-[50] z-0 object-cover  mx-auto absolute -rotate-12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' autoPlay muted loop>
+        <video className='slanted-image  shadow-sm shadow-black  sm:w-[300] sm:h-[180] w-[300] h-[300] sm:scale-100 scale-40 z-0 object-cover  mx-auto absolute -rotate-12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' autoPlay muted loop>
           <source src={`https://res.cloudinary.com/dgd6bxkak/video/upload/v1773213492/14482698_1920_1080_25fps_hezkzr.mp4`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
