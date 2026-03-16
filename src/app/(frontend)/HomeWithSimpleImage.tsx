@@ -59,15 +59,28 @@ const tl = gsap.timeline({
   ease: "ease.inOut",
   duration: 5,
 })
-tl.to(".slanted-image", {
+
+            
+
+   if (ScrollTrigger.isTouch === 1) {
+               tl.to(".slanted-image", {
   rotate : .15,
   // translateY: "+=550%",
   scale: `${window.innerWidth / window.innerHeight * 3}`,
   ease: " ease.inOut",
   duration: 5,
 })
-            
-
+            }
+            else {
+tl.to(".slanted-image", {
+  rotate : .15,
+  // translateY: "+=550%",
+  scale: `${window.innerWidth / window.innerHeight * 2.9}`,
+  ease: " ease.inOut",
+  duration: 5,
+})
+            }
+      
 tl.to(".slanted-image", {
   // rotate : .15,
   translateY:  `${window.innerHeight}`,
@@ -75,13 +88,7 @@ tl.to(".slanted-image", {
   ease: "ease.inOut",
   duration: 5,
 })
-tl.to(".slanted-image", {
-  rotate : .15,
-  // translateY: "+=550%",
-  scale: `${window.innerWidth / window.innerHeight * 3}`,
-  ease: " ease.inOut",
-  duration: 5,
-})
+
 
         }, { scope: ref })
 
