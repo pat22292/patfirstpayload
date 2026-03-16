@@ -42,25 +42,26 @@ const HomeWithSimpleImage = () => {
         () => {
 const tl = gsap.timeline({
   scrollTrigger: {
+    
     // markers: true,
     // trigger: ".slanted-image",
     scrub: true,
     pin: true,
     start: 'top top', // Start animation when the top of the trigger hits the center of the viewport
-    end: `${window.innerHeight * 2 }` , // End animation when the bottom of the trigger hits the top of the viewport
+    end: `${window.innerHeight / 2 }` , // End animation when the bottom of the trigger hits the top of the viewport
   }
 });
 
 
              tl.to(".slanted-image", {
   // rotate : .15,
-  translateY:  `${window.innerHeight}`,
+  translateY:  `${window.innerHeight * .75}`,
   // scale:6,
+  stagger: 1,
   ease: "ease.inOut",
   duration: 5,
 })
 
-            
 
    if (ScrollTrigger.isTouch === 1) {
                tl.to(".slanted-image", {
@@ -81,13 +82,13 @@ tl.to(".slanted-image", {
 })
             }
       
-tl.to(".slanted-image", {
-  // rotate : .15,
-  translateY:  `${window.innerHeight}`,
-  // scale:6,
-  ease: "ease.inOut",
-  duration: 5,
-})
+// tl.to(".slanted-image", {
+//   // rotate : .15,
+//   translateY:  `${window.innerHeight} `,
+//   // scale:6,
+//   ease: "ease.inOut",
+//   duration: 5,
+// })
 
 
         }, { scope: ref })
@@ -99,7 +100,7 @@ tl.to(".slanted-image", {
 
       
 
-        <div className=' flex-col font-[anton] text-center leading-[.9] sm:text-[200px] md:text-[150px] text-[100px] text-[#1ce585] text-shadow-lg/20'>
+        <div id='bannerText' className=' flex-col font-[anton] text-center leading-[.9] sm:text-[200px] md:text-[150px] text-[100px] text-[#1ce585] text-shadow-lg/20'>
  <span className='-z-10 ' >TIME TO MEET</span><br/>
 
         <span className='z-50 relative'>YOUR SUCCESS</span>
