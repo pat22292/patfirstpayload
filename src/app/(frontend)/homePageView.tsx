@@ -7,7 +7,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function HomePageClient() {
+export default function xHomePageClient() {
     gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(TextPlugin);
@@ -117,10 +117,10 @@ export default function HomePageClient() {
               scrub: true,
               // pin: true,
               start: "bottom bottom",
-              end: "+=70%",
+              end: "+=100%",
             },
-            duration: 10,
-            translateX: "-50%",
+            duration: 500,
+            translateX: "-250%",
             ease: "slow",
             stagger: 1
           });
@@ -165,7 +165,7 @@ return (
 
     <div className='whole-text  h-screen flex items-center justify-center  '>
     
-      <h1 className='font-akshar font-black leading-32  drop-shadow-xl md:inline-block'>
+      <h1 className='font-[roboto] text-[#1ce585] font-black leading-32  drop-shadow-xl md:inline-block'>
         <span className="greetext sm:text-9xl text-6xl font-black "> Hi! I'm Patrick.</span>
          <span className="textKo sm:text-9xl text-6xl font-black ">  </span>
       {/* <span className="blinking-cursor">|</span> */}
@@ -194,14 +194,14 @@ return (
     </div>
   </section>
   
-  <section className='slante-text-container  -mt-[50%] bg-amber-200  h-screen relative '>
+  <section className='slante-text-container     h-screen relative '>
 
  
 
 
-      <div className='relative w-full  h-screen bg-transparent overflow-hidden flex items-center justify-center'>
-      <div className= 'absolute h-25   -mt-80 w-[200%] -rotate-12 text-blue-500 opacity-80 z-50 bg-black flex items-center justify-center' >
-<span className='slanted-text text-white text-6xl font-black'>THIS IS THE FIRST SLANTED TEXT IN THIS WEBSITE, DO YOU WANT ONE</span>
+      <div className='relative w-full  h-screen bg-transparent overflow-hidden flex items-start justify-start'>
+      <div className= 'absolute h-25  -ml-200 w-[400%] -rotate-6  opacity-80 z-50 bg-[#1ce585]  flex items-center justify-center' >
+<h1 className='slanted-text text-[#00592b] text-6xl  font-[roboto] font-black'>THIS IS THE FIRST SLANTED TEXT IN THIS WEBSITE, DO YOU WANT ONE</h1>
       </div>
 {/* <svg className='absolute w-[200%]  text-blue-500 opacity-80 z-50'  width="4966" height="1333" viewBox="0 0 4966 1333" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="4997.65" height="341.714" transform="matrix(0.979873 -0.19962 -0.19962 -0.979873 68.2129 1332.46)" fill="black"/>

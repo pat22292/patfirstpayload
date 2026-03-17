@@ -5,6 +5,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import HomePageClient from './homePageView'
 
 
 const HomeWithSimpleImage = () => {
@@ -58,8 +59,8 @@ const tl = gsap.timeline({
   translateY:  `${window.innerHeight * .75}`,
   // scale:6,
   stagger: 1,
-  ease: "ease.inOut",
-  duration: 5,
+  ease: "expoScale(0.5,7,none)",
+    duration: 5,
 })
 
 
@@ -68,8 +69,9 @@ const tl = gsap.timeline({
   rotate : .15,
   // translateY: "+=550%",
   scale: `${window.innerWidth / window.innerHeight * 3}`,
-  ease: " ease.inOut",
-  duration: 5,
+  ease:  "expoScale(0.5,7,none)",
+    duration: 5,
+    stagger: 1
 })
             }
             else {
@@ -77,8 +79,9 @@ tl.to(".slanted-image", {
   rotate : .15,
   // translateY: "+=550%",
   scale: `${window.innerWidth / window.innerHeight * 2.9}`,
-  ease: " ease.inOut",
-  duration: 5,
+  ease:  "expoScale(0.5,7,none)",
+    duration: 5,
+    stagger: 1
 })
             }
       
@@ -122,9 +125,11 @@ tl.to(".slanted-image", {
         </video>
          
     </section>
-    <section className=' w-full h-screen  flex items-center justify-center'>
+     <HomePageClient/>
+    
+    {/* <section className=' w-full h-screen  flex items-center justify-center'>
 <h1>Next.js</h1>
-    </section>
+    </section> */}
       </div>
   )
 }

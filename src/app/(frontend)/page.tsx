@@ -72,6 +72,7 @@ export default async function HomePage() {
         </div> */}
       
  <HeroSliderAutomatic slides={products as []}/>
+ {/* <HomePageClient/> */}
       
      
       
