@@ -98,12 +98,12 @@ tl.to(".slanted-image", {
 
 
   return (
-    <div ref={ref} className='bg-[#00592b]'>
+    <div ref={ref} className=''>
     <section  className=' flex w-full h-screen items-center justify-center '>
 
       
 
-        <div id='bannerText' className=' flex-col font-[anton] text-center leading-[.9] sm:text-[200px] md:text-[150px] text-[100px] text-[#1ce585] text-shadow-lg/20'>
+        <div id='bannerText' className=' flex-col font-[anton] text-center leading-[.9] sm:text-[200px] md:text-[200px] text-[100px] text-[#1ce585] text-shadow-lg/20'>
  <span className='-z-10 ' >TIME TO MEET</span><br/>
 
         <span className='z-50 relative'>YOUR SUCCESS</span>

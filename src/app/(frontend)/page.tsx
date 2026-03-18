@@ -25,7 +25,7 @@ export default async function HomePage() {
 
   return (
     // <div className="home">
-      <div className=''>
+      <div className='bg-[#00592b]'>
         {/* <GsapTest /> */}
         {/* <HomePageClient /> */}
     <nav className="flex absolute top-0 inset-x-0 items-center  justify-between p-4 bg-transparent">

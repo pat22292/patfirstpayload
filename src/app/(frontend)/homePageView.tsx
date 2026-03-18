@@ -52,7 +52,7 @@ export default function xHomePageClient() {
             },
             duration: 1500,
              ease: "slow",
-            text: "I can be your",
+            text: "We have a",
             stagger: 1
           });
 
@@ -102,9 +102,9 @@ export default function xHomePageClient() {
               scrub: true,
               // pin: true,
               start: `+${window.innerHeight * 3}%`,
-              end: "+=150%"
+              end: "+=50%"
             },
-            duration: 20,
+            duration: 1,
             text: " Mobile Dev.",
             ease: "slow",
             stagger: 1
@@ -117,10 +117,10 @@ export default function xHomePageClient() {
               scrub: true,
               // pin: true,
               start: "bottom bottom",
-              end: "+=100%",
+              end: "+=50%",
             },
             duration: 500,
-            translateX: "-250%",
+            translateX: "-70%",
             ease: "slow",
             stagger: 1
           });
@@ -165,9 +165,9 @@ return (
 
     <div className='whole-text  h-screen flex items-center justify-center  '>
     
-      <h1 className='font-[roboto] text-[#1ce585] font-black leading-32  drop-shadow-xl md:inline-block'>
-        <span className="greetext sm:text-9xl text-6xl font-black "> Hi! I'm Patrick.</span>
-         <span className="textKo sm:text-9xl text-6xl font-black ">  </span>
+      <h1 className='font-[roboto] sm:text-[200px] md:text-[150px] text-[100px] text-[#1ce585] font-black leading-40  drop-shadow-xl md:inline-block'>
+        <span className="greetext  font-black "> Hi! We're a team.</span>
+         <span className="textKo  font-black ">  </span>
       {/* <span className="blinking-cursor">|</span> */}
       {/* <button onClick={() => {console.log(window.innerHeight)}} className='text-2xl font-extrabold drop-shadow-xl inline-block '>Click Me
      </button> */}
@@ -194,14 +194,14 @@ return (
     </div>
   </section>
   
-  <section className='slante-text-container     h-screen relative '>
+  <section className='slante-text-container     h-screen relative  '>
 
  
 
 
-      <div className='relative w-full  h-screen bg-transparent overflow-hidden flex items-start justify-start'>
-      <div className= 'absolute h-25  -ml-200 w-[400%] -rotate-6  opacity-80 z-50 bg-[#1ce585]  flex items-center justify-center' >
-<h1 className='slanted-text text-[#00592b] text-6xl  font-[roboto] font-black'>THIS IS THE FIRST SLANTED TEXT IN THIS WEBSITE, DO YOU WANT ONE</h1>
+      <div className='relative w-full  h-screen bg-transparent overflow-hidden flex items-center justify-center '>
+      <div className= 'absolute h-25 w-[150%] -top-.5 z-50  -rotate-6  opacity-80  bg-[#1ce585]  flex items-center justify-center ' >
+<h1 className='slanted-text text-[#00592b] text-6xl  font-[roboto] font-black '>ALL YOU BEEN LOOKING FOR A WEBSITE IS WE MAKE CHEAPER YET AWESOME!</h1>
       </div>
 {/* <svg className='absolute w-[200%]  text-blue-500 opacity-80 z-50'  width="4966" height="1333" viewBox="0 0 4966 1333" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="4997.65" height="341.714" transform="matrix(0.979873 -0.19962 -0.19962 -0.979873 68.2129 1332.46)" fill="black"/>
