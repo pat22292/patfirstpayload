@@ -128,6 +128,11 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: string;
+  /**
+   * Enter a 4-digit PIN
+   */
+  pinCode?: number | null;
+  hashedPincode?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -447,6 +452,8 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  pinCode?: T;
+  hashedPincode?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
