@@ -4,11 +4,16 @@ import HeroSliderAutomatic from '../../../components/automaticGSAPCarousel'
 import React from 'react'
 import config from '@/payload.config'
 import HomeWithSimpleImage from './HomeWithSimpleImage'
+import LogoutButton from 'components/LogoutButton'
+import AuthButtons from 'components/authbuttons'
+import GoogleLogin from 'components/googlesignin'
 
 export default async function HomePage() {
   const headers = await getHeaders()
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
   const { docs: products } = await payload.find({ collection: 'product' })
 
   return (
@@ -28,11 +33,14 @@ export default async function HomePage() {
           </a>
         </div>
 
-        <a href="#" className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm">
+        {/* <a href="#" className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm">
           Contact
-        </a>
+        </a> */}
+        <AuthButtons />
+        {/* <GoogleLogin /> */}
       </nav>
-
+    
+    
       <HomeWithSimpleImage />
 
       <HeroSliderAutomatic slides={products as []} />

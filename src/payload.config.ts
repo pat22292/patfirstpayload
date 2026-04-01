@@ -15,6 +15,8 @@ import type { UploadApiResponse } from 'cloudinary'
 import { Header } from './globals/Header'
 import { Pages } from '@/collections/Pages'
 // import SaveButton from './admin/SaveButton'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer';
+import nodemailer from 'nodemailer';
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -47,7 +49,19 @@ cloudinary.config({
 
 
 export default buildConfig({
-
+   email: nodemailerAdapter({
+    defaultFromAddress: 'dream.appbuilders2022@zohomail.com',
+    defaultFromName: 'Your App',
+    transport: nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS, // use app password
+      },
+    }),
+  }),
   admin: {
 theme: 'light',
     user: Users.slug,
@@ -62,6 +76,7 @@ theme: 'light',
   
   // }  as any,
   },
+   
   collections: [Users, Media, Products, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -92,6 +107,7 @@ theme: 'light',
       folder: 'payload-media',
 
     }),
+    
     // payloadCloudPlugin(),
     // cloudStoragePlugin({
     //   collections: {

@@ -1,4 +1,5 @@
 import React from 'react'
+import Script from 'next/script'
 import './styles.css'
 import { ThemeModeScript } from 'flowbite-react'
 import { Button, createTheme, ThemeProvider } from 'flowbite-react'
@@ -56,6 +57,14 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
             {children}
             </SmoothScrollProvider>
             </main>
+              <Script
+          src="https://accounts.google.com/gsi/client"
+          strategy="beforeInteractive"
+        />
+        {/* <script src="https://google.com" async defer></script> */}
+        <script src="https://accounts.google.com/gsi/client?hl=en" async></script>
+
+
         </body>
       </html>
     </ThemeProvider>

@@ -131,8 +131,11 @@ export interface User {
   /**
    * Enter a 4-digit PIN
    */
-  pinCode?: number | null;
+  pinCode?: string | null;
   hashedPincode?: string | null;
+  googleId?: string | null;
+  avatar?: string | null;
+  googleAuthPassword?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -454,6 +457,9 @@ export interface PayloadMigration {
 export interface UsersSelect<T extends boolean = true> {
   pinCode?: T;
   hashedPincode?: T;
+  googleId?: T;
+  avatar?: T;
+  googleAuthPassword?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
