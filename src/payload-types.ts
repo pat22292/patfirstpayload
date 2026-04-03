@@ -136,6 +136,7 @@ export interface User {
   googleId?: string | null;
   avatar?: string | null;
   googleAuthPassword?: string | null;
+  role: 'admin' | 'user';
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -460,6 +461,7 @@ export interface UsersSelect<T extends boolean = true> {
   googleId?: T;
   avatar?: T;
   googleAuthPassword?: T;
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

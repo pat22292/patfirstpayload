@@ -18,6 +18,34 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
   },
+   access: {
+    // This specifically controls who can log into the Admin UI
+    admin: ({ req: { user } }) => {
+      if (user && user.googleAuthPassword !== null) {
+        return true; // Allow access
+      }
+      return false; // Deny access
+    },
+         create: () => true, 
+    // read: ({ req: { user } }) => user?.role === 'admin',
+    read: ({ req: { user } }) => {
+      if (user && user.role !== 'admin') {
+        return {
+          id: {
+            equals: user.id,
+          },
+        }
+      }
+      else
+      {
+        return true; // Admin can read all, non-admins can read only their own record
+      }
+      // If no user is logged in, deny access
+      return false
+    },
+    update: ({ req: { user }, id }) => user?.role === 'admin' || user?.id === id,
+    delete: ({ req: { user } }) => user?.role === 'admin',
+  },
   auth: true,
   
   fields: [
@@ -50,7 +78,17 @@ export const Users: CollectionConfig = {
   name: "googleAuthPassword",
   type: "text",
   admin: {hidden: true} // Hide from admin UI and make read-only
-}
+},
+  {
+      name: 'role',
+      type: 'select',
+      options: [
+        { label: 'Admin', value: 'admin' },
+        { label: 'User', value: 'user' },
+      ],
+      required: true,
+      defaultValue: 'user', // Non-admin by default
+    },
     // Email added by default
     // Add more fields as needed
   ],
