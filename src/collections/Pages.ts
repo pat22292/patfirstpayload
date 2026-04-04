@@ -6,6 +6,29 @@ export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
     useAsTitle: 'title',
+    hidden: ({ user }) => user?.role !== 'admin',
+  },
+  
+    access: {
+    // read: () => true,
+      create: ({ req: { user } }) => {
+      if (user && (user.role === 'admin' )) {
+        return true;
+      }
+      return false;
+    },
+    update: ({ req: { user } }) => {
+      if (user && (user.role === 'admin' )) {
+        return true;
+      }
+      return false;
+    },
+    delete: ({ req: { user } }) => {
+      if (user && (user.role === 'admin' )) {
+        return true;
+      }
+      return false;
+    },  
   },
   fields: [
     {

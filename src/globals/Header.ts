@@ -3,7 +3,14 @@ import type { GlobalConfig } from 'payload'
 export const Header: GlobalConfig = {
   slug: 'header',
   access: {
-    read: () => true, // 👈 IMPORTANT
+    // read: () => true, // 👈 IMPORTANT
+      read: ({ req: { user } }) => {
+      if (user && (user.role === 'admin' )) {
+        return true;
+      }
+      return false;
+    },
+    
   },
   label: 'Header',
   fields: [

@@ -3,7 +3,25 @@ import type { CollectionConfig } from 'payload'
 export const Products: CollectionConfig = {
   slug: 'product',
   access: {
-    read: () => true,
+    // read: () => true,
+      create: ({ req: { user } }) => {
+      if (user && (user.role === 'admin' || user.role === 'editor' )) {
+        return true;
+      }
+      return false;
+    },
+    update: ({ req: { user } }) => {
+      if (user && (user.role === 'admin' || user.role === 'editor' )) {
+        return true;
+      }
+      return false;
+    },
+    delete: ({ req: { user } }) => {
+      if (user && (user.role === 'admin' || user.role === 'editor' )) {
+        return true;
+      }
+      return false;
+    },  
   },
   fields: [
      {

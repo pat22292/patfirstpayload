@@ -136,7 +136,7 @@ export interface User {
   googleId?: string | null;
   avatar?: string | null;
   googleAuthPassword?: string | null;
-  role: 'admin' | 'user';
+  role: 'admin' | 'user' | 'editor';
   updatedAt: string;
   createdAt: string;
   email: string;

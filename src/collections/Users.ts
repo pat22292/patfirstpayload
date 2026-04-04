@@ -17,9 +17,10 @@ export const Users: CollectionConfig = {
   versions: false, // Disable versioning for the Users collection
   admin: {
     useAsTitle: 'email',
+    hidden: ({ user }) => user?.role !== 'admin', // Only show to admins
   },
   auth: true,
-    access: {
+  access: {
        admin: ({ req: { user } }) => {
       if (user && user.googleAuthPassword !== null) {
         return true; // Allow access
@@ -84,10 +85,18 @@ export const Users: CollectionConfig = {
       options: [
         { label: 'Admin', value: 'admin' },
         { label: 'User', value: 'user' },
+        { label: 'Editor', value: 'editor' },
       ],
       required: true,
       defaultValue: 'user',
       saveToJWT: true, // Non-admin by default
+      // admin: {
+      //   condition: ({ user }) => user?.role === "admin", // Only show role field to admins
+      //  // Hide from non-admins
+      // },
+      // admin: {
+      //   condition: (data, siblingData, { user }) => Boolean(user),
+      // },
     },
     // Email added by default
     // Add more fields as needed
@@ -268,6 +277,21 @@ const generatedPassword = crypto.randomUUID()
       }
       return data;
     },
+ async ({ data, req, operation }) => {
+        if (operation === 'create') {
+          const existingUsers = await req.payload.find({
+            collection: 'users',
+            limit: 1,
+          });
+
+          // If no users exist, assign the admin role to this first user
+          if (existingUsers.totalDocs === 0) {
+            data.role = 'admin';
+          }
+        }
+        return data;
+      },
+
 //      async ({ data, operation, req }) => {
 //         // Generate pin only on create, or when a specific flag is set
 //         if (operation === 'create' && !data?.pinCode) {
