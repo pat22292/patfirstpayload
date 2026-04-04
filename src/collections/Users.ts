@@ -5,7 +5,6 @@ import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken"
 import { OAuth2Client } from "google-auth-library"
 import crypto from 'crypto'
-import { g } from 'node_modules/vitest/dist/chunks/suite.d.BJWk38HB';
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -15,39 +14,36 @@ const generatePin = () => Math.floor(1000 + Math.random() * 9000).toString();
 
 export const Users: CollectionConfig = {
   slug: 'users',
+  versions: false, // Disable versioning for the Users collection
   admin: {
     useAsTitle: 'email',
   },
-   access: {
-    // This specifically controls who can log into the Admin UI
-    admin: ({ req: { user } }) => {
-      if (user && user.googleAuthPassword !== null) {
-        return true; // Allow access
-      }
-      return false; // Deny access
-    },
-         create: () => true, 
-    // read: ({ req: { user } }) => user?.role === 'admin',
-    read: ({ req: { user } }) => {
-      if (user && user.role !== 'admin') {
-        return {
-          id: {
-            equals: user.id,
-          },
-        }
-      }
-      else
-      {
-        return true; // Admin can read all, non-admins can read only their own record
-      }
-      // If no user is logged in, deny access
-      return false
-    },
-    update: ({ req: { user }, id }) => user?.role === 'admin' || user?.id === id,
-    delete: ({ req: { user } }) => user?.role === 'admin',
-  },
   auth: true,
-  
+  //   access: {
+  //      admin: ({ req: { user } }) => {
+  //     if (user && user.googleAuthPassword !== null) {
+  //       return true; // Allow access
+  //     }
+  //     return false; // Deny access
+  //   },
+  //    create: () => true, 
+  //   // read: ({ req: { user } }) => user?.role === 'admin',
+  //   read: ({ req: { user } }) => {
+  //     if (user && user.role !== 'admin') {
+  //       return {
+  //         id: {
+  //           equals: user.id,
+  //         },
+  //       }
+  //     }
+  //     else
+  //     {
+  //       return true; // Admin can read all, non-admins can read only their own record
+  //     }
+  //     // If no user is logged in, deny access
+  //     return false
+  //   },
+  // }, // Hide from admin UI and make read-only
   fields: [
     {
        
@@ -77,7 +73,8 @@ export const Users: CollectionConfig = {
     {
   name: "googleAuthPassword",
   type: "text",
-  admin: {hidden: true} // Hide from admin UI and make read-only
+  admin: {hidden: true},
+
 },
   {
       name: 'role',
@@ -87,7 +84,8 @@ export const Users: CollectionConfig = {
         { label: 'User', value: 'user' },
       ],
       required: true,
-      defaultValue: 'user', // Non-admin by default
+      defaultValue: 'user',
+      saveToJWT: true, // Non-admin by default
     },
     // Email added by default
     // Add more fields as needed
@@ -111,7 +109,7 @@ export const Users: CollectionConfig = {
             email: { equals: email },
           },
           overideAccess: true,
-        })
+        } as any)
 
         const user = users.docs[0]
 
@@ -188,7 +186,7 @@ export const Users: CollectionConfig = {
         googleId: { equals: sub },
       },
           overrideAccess: true,
-        })
+        } as any)
 
         let user = existing.docs[0]
 const generatedPassword = crypto.randomUUID()
@@ -202,7 +200,10 @@ const generatedPassword = crypto.randomUUID()
               googleAuthPassword: generatedPassword,
               googleId: sub,
               avatar: picture,
+              role: 'user', // Default role for Google sign-ins
             },
+              draft: false,
+              overrideAccess: true,
           })
         }
         else {

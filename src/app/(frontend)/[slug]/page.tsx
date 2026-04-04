@@ -16,7 +16,7 @@ type PageProps = {
 }
 
 export default async function Page({ params }: PageProps) {
-  const slug = await params.slug
+  const {slug} = await params
 
   const payload = await getPayloadClient()
 
