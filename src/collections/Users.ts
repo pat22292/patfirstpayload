@@ -19,31 +19,33 @@ export const Users: CollectionConfig = {
     useAsTitle: 'email',
   },
   auth: true,
-  //   access: {
-  //      admin: ({ req: { user } }) => {
-  //     if (user && user.googleAuthPassword !== null) {
-  //       return true; // Allow access
-  //     }
-  //     return false; // Deny access
-  //   },
-  //    create: () => true, 
-  //   // read: ({ req: { user } }) => user?.role === 'admin',
-  //   read: ({ req: { user } }) => {
-  //     if (user && user.role !== 'admin') {
-  //       return {
-  //         id: {
-  //           equals: user.id,
-  //         },
-  //       }
-  //     }
-  //     else
-  //     {
-  //       return true; // Admin can read all, non-admins can read only their own record
-  //     }
-  //     // If no user is logged in, deny access
-  //     return false
-  //   },
-  // }, // Hide from admin UI and make read-only
+    access: {
+       admin: ({ req: { user } }) => {
+      if (user && user.googleAuthPassword !== null) {
+        return true; // Allow access
+      }
+      return false; // Deny access
+    },
+     create: () => true, 
+    // read: ({ req: { user } }) => user?.role === 'admin',
+    read: ({ req: { user } }) => {
+      if (user && user.role !== 'admin') {
+        return {
+          id: {
+            equals: user.id,
+          },
+        }
+      }
+      else
+      {
+        return true; // Admin can read all, non-admins can read only their own record
+      }
+      // If no user is logged in, deny access
+      return false
+    },
+    update: ({ req: { user }, id }) => user?.role === 'admin' || user?.id === id,
+    delete: ({ req: { user } }) => user?.role === 'admin',
+  }, // Hide from admin UI and make read-only
   fields: [
     {
        
