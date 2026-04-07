@@ -1,4 +1,5 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -83,8 +84,13 @@ theme: 'light',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: mongooseAdapter({
-    url: process.env.DATABASE_URL || '',
+  // db: mongooseAdapter({
+  //   url: process.env.DATABASE_URL || '',
+  // }),
+  db: postgresAdapter({
+     pool: {
+      connectionString: process.env.DATABASE_URI || '',
+    },
   }),
   sharp,
   plugins: [

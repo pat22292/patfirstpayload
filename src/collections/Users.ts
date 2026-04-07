@@ -22,7 +22,7 @@ export const Users: CollectionConfig = {
   auth: true,
   access: {
        admin: ({ req: { user } }) => {
-      if (user && user.googleAuthPassword !== null) {
+      if (user && user.role === 'admin' || user && user.role === 'editor') {
         return true; // Allow access
       }
       return false; // Deny access
