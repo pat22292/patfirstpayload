@@ -105,7 +105,7 @@ theme: 'light',
         api_secret: process.env.CLOUDINARY_API_SECRET!,
 
       },
-hidden: false,
+
       collections: {
 
         media: true,
