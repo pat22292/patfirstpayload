@@ -165,6 +165,15 @@ export interface User {
 export interface Media {
   id: number;
   alt: string;
+  cloudinaryData?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   /**
    * Cloudinary Media Information
    */
@@ -247,6 +256,7 @@ export interface Product {
   _order?: string | null;
   Title?: string | null;
   alt: string;
+  variation?: (number | ProductVariation)[] | null;
   /**
    * Cloudinary Media Information
    */
@@ -338,6 +348,67 @@ export interface ProductVariation {
     | number
     | boolean
     | null;
+  /**
+   * Cloudinary Media Information
+   */
+  cloudinary?: {
+    /**
+     * Cloudinary Public ID (used for transformations)
+     */
+    public_id?: string | null;
+    /**
+     * Type of the resource (image, video, raw)
+     */
+    resource_type?: string | null;
+    /**
+     * File format
+     */
+    format?: string | null;
+    /**
+     * Secure delivery URL
+     */
+    secure_url?: string | null;
+    /**
+     * File size in bytes
+     */
+    bytes?: number | null;
+    /**
+     * Creation timestamp
+     */
+    created_at?: string | null;
+    /**
+     * Current version number
+     */
+    version?: string | null;
+    /**
+     * Unique version identifier
+     */
+    version_id?: string | null;
+    /**
+     * Width in pixels
+     */
+    width?: number | null;
+    /**
+     * Height in pixels
+     */
+    height?: number | null;
+    /**
+     * Duration in seconds (for videos)
+     */
+    duration?: number | null;
+    /**
+     * Number of pages (for PDFs)
+     */
+    pages?: number | null;
+    /**
+     * Which page of the PDF to use for thumbnails (changes will apply after saving)
+     */
+    selected_page?: number | null;
+    /**
+     * URL for the thumbnail image (automatically generated for PDFs)
+     */
+    thumbnail_url?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -512,6 +583,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  cloudinaryData?: T;
   cloudinary?:
     | T
     | {
@@ -550,6 +622,7 @@ export interface ProductSelect<T extends boolean = true> {
   _order?: T;
   Title?: T;
   alt?: T;
+  variation?: T;
   cloudinary?:
     | T
     | {
@@ -589,6 +662,24 @@ export interface ProductVariationSelect<T extends boolean = true> {
   Title?: T;
   alt?: T;
   variationOptions?: T;
+  cloudinary?:
+    | T
+    | {
+        public_id?: T;
+        resource_type?: T;
+        format?: T;
+        secure_url?: T;
+        bytes?: T;
+        created_at?: T;
+        version?: T;
+        version_id?: T;
+        width?: T;
+        height?: T;
+        duration?: T;
+        pages?: T;
+        selected_page?: T;
+        thumbnail_url?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   url?: T;

@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, Field } from 'payload'
 
 export const ProductVariations: CollectionConfig = {
   slug: 'productVariation',
@@ -41,7 +41,28 @@ export const ProductVariations: CollectionConfig = {
       // By default, this field is not required and thus nullable
       required: false, // This is implicit if omitted, but can be explicit
     },
+     
   ],
   upload: true,
   orderable: true,
+hooks: {
+    afterRead: [
+  ({ doc }) => {
+    if (doc.cloudinary?.secure_url) {
+      doc.url = doc.cloudinary.secure_url
+    }
+    delete doc.cloudinary
+      delete doc.url;
+        delete doc.filename;
+        delete doc.mimeType;
+        delete doc.filesize;
+        delete doc.width;
+        delete doc.height;
+        delete doc.focalX;
+        delete doc.focalY;
+    return doc
+  }
+]
+  },
 }
+

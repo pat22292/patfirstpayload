@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, Field } from 'payload'
 
 export const Products: CollectionConfig = {
   slug: 'product',
@@ -34,7 +34,34 @@ export const Products: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'variation',
+      type: 'relationship',
+      relationTo: 'productVariation',
+      hasMany: true,
+    },
+    
+
   ],
   upload: true,
   orderable: true,
+  hooks: {
+    afterRead: [
+  ({ doc }) => {
+    if (doc.cloudinary?.secure_url) {
+      doc.url = doc.cloudinary.secure_url
+    }
+    delete doc.cloudinary
+        delete doc.url;
+        delete doc.mimeType;
+        delete doc.filesize;
+        delete doc.width;
+        delete doc.height;
+        delete doc.focalX;
+        delete doc.focalY;
+    return doc
+  }
+]
+  },
 }
+

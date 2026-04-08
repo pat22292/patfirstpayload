@@ -29,7 +29,7 @@ const GsapTest = () => {
           var tl = gsap.timeline({
               scrollTrigger: {
                 trigger: ".first-section",
-                markers: true,
+                // markers: true,
                 scrub: true,
                 pin: true,
                 start: 'bottom bottom',

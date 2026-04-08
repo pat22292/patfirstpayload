@@ -30,6 +30,13 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+  name: 'cloudinaryData',
+  type: 'json',
+  access: {
+    read: () => false, // Hides field from API responses
+  },
+},
   ],
   upload: {
     crop: false,

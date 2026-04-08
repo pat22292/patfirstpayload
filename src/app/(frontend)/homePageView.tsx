@@ -112,7 +112,7 @@ export default function xHomePageClient() {
 
               gsap.from(".slanted-text", {
             scrollTrigger: {
-              markers: true,
+              // markers: true,
               trigger: ".slanted-text",
               scrub: true,
               // pin: true,
