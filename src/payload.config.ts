@@ -11,6 +11,7 @@ import { cloudinaryStorage } from 'payload-cloudinary'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Products } from './collections/Products'
+import { ProductVariations } from './collections/ProductVariations'
 import { HandleDelete, HandleUpload } from '@payloadcms/plugin-cloud-storage/types'
 import type { UploadApiResponse } from 'cloudinary'
 import { Header } from './globals/Header'
@@ -78,7 +79,7 @@ theme: 'light',
   // }  as any,
   },
    
-  collections: [Users, Media, Products, Pages],
+  collections: [Users, Media, Products, ProductVariations, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     product: Product;
+    productVariation: ProductVariation;
     pages: Page;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -81,6 +82,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     product: ProductSelect<false> | ProductSelect<true>;
+    productVariation: ProductVariationSelect<false> | ProductVariationSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -245,15 +247,6 @@ export interface Product {
   _order?: string | null;
   Title?: string | null;
   alt: string;
-  variation?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
   /**
    * Cloudinary Media Information
    */
@@ -315,6 +308,36 @@ export interface Product {
      */
     thumbnail_url?: string | null;
   };
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "productVariation".
+ */
+export interface ProductVariation {
+  id: number;
+  _order?: string | null;
+  Title?: string | null;
+  alt: string;
+  variationOptions?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -404,6 +427,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'product';
         value: number | Product;
+      } | null)
+    | ({
+        relationTo: 'productVariation';
+        value: number | ProductVariation;
       } | null)
     | ({
         relationTo: 'pages';
@@ -523,7 +550,6 @@ export interface ProductSelect<T extends boolean = true> {
   _order?: T;
   Title?: T;
   alt?: T;
-  variation?: T;
   cloudinary?:
     | T
     | {
@@ -542,6 +568,27 @@ export interface ProductSelect<T extends boolean = true> {
         selected_page?: T;
         thumbnail_url?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "productVariation_select".
+ */
+export interface ProductVariationSelect<T extends boolean = true> {
+  _order?: T;
+  Title?: T;
+  alt?: T;
+  variationOptions?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;

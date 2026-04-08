@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
-export const Products: CollectionConfig = {
-  slug: 'product',
+export const ProductVariations: CollectionConfig = {
+  slug: 'productVariation',
   access: {
     // read: () => true,
       create: ({ req: { user } }) => {
@@ -33,6 +33,13 @@ export const Products: CollectionConfig = {
       name: 'alt',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'variationOptions',
+      type: 'json',
+      label: 'Variation Options',
+      // By default, this field is not required and thus nullable
+      required: false, // This is implicit if omitted, but can be explicit
     },
   ],
   upload: true,
