@@ -7,43 +7,40 @@ import HomeWithSimpleImage from './HomeWithSimpleImage'
 import LogoutButton from 'components/LogoutButton'
 import AuthButtons from 'components/authbuttons'
 import GoogleLogin from 'components/googlesignin'
-
+import Shop from 'components/shop'
 export default async function HomePage() {
   const headers = await getHeaders()
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-    await new Promise(resolve => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 2000))
 
   const { docs: products } = await payload.find({ collection: 'product' })
+  // console.log(products)
 
   return (
-    <div className="bg-[#00592b]">
-      <nav className="flex absolute top-0 inset-x-0 items-center justify-between p-4 bg-transparent">
-        <div className="text-2xl font-[anton] text-[#1ce585]">BRAND</div>
+    <Shop slides={products as []} />
+    // <div className="bg-[#00592b]">
+    //   <nav className="flex absolute top-0 inset-x-0 items-center justify-between p-4 bg-transparent">
+    //     <div className="text-2xl font-[anton] text-[#1ce585]">BRAND</div>
 
-        <div className="hidden font-[roboto] md:flex text-lg items-center gap-6 text-white">
-          <a href="#" className="hover:text-black">
-            Home
-          </a>
-          <a href="#" className="hover:text-black">
-            About
-          </a>
-          <a href="#" className="hover:text-black">
-            Services
-          </a>
-        </div>
+    //     <div className="hidden font-[roboto] md:flex text-lg items-center gap-6 text-white">
+    //       <a href="#" className="hover:text-black">
+    //         Home
+    //       </a>
+    //       <a href="#" className="hover:text-black">
+    //         About
+    //       </a>
+    //       <a href="#" className="hover:text-black">
+    //         Services
+    //       </a>
+    //     </div>
 
-        {/* <a href="#" className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm">
-          Contact
-        </a> */}
-        <AuthButtons />
-        {/* <GoogleLogin /> */}
-      </nav>
-    
-    
-      <HomeWithSimpleImage />
+    //     <AuthButtons />
+    //   </nav>
 
-      <HeroSliderAutomatic slides={products as []} />
-    </div>
+    //   <HomeWithSimpleImage />
+
+    //   <HeroSliderAutomatic slides={products as []} />
+    // </div>
   )
 }

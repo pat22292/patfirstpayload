@@ -1,8 +1,8 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import GoogleLogin from "./googlesignin"
-import LogoutButton from "./LogoutButton"
+import { useEffect, useState } from 'react'
+import GoogleLogin from './googlesignin'
+import LogoutButton from './LogoutButton'
 
 export default function AuthButtons() {
   const [user, setUser] = useState(null)
@@ -10,11 +10,11 @@ export default function AuthButtons() {
 
   useEffect(() => {
     setLoading(true)
-    fetch("/api/users/me", {
-      credentials: "include",
+    fetch('/api/users/me', {
+      credentials: 'include',
     })
-      .then(res => res.json())
-      .then(data => setUser(data.user))
+      .then((res) => res.json())
+      .then((data) => setUser(data.user))
       .finally(() => setLoading(false))
   }, [])
 
