@@ -1,10 +1,11 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AuthButtons from './authbuttons'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-export default function ProductPage() {
+export default function ProductPage({ product }: { product: any }) {
   const [activeImage, setActiveImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [selectedColor, setSelectedColor] = useState('White')
@@ -17,6 +18,17 @@ export default function ProductPage() {
     'https://via.placeholder.com/600x600?text=Blue+Sweater',
     'https://via.placeholder.com/600x600?text=Yellow+Sweater',
   ]
+
+  useEffect(() => {
+    // Standard instant scroll
+    window.scrollTo(0, 0)
+
+    // Optional: Smooth scroll
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+  }, [])
 
   const colors = ['Black', 'Gray', 'White', 'Yellow', 'Green', 'Pink', 'Wine Red', 'Blue']
   const sizes = ['M', 'L', 'XL', '2XL', '3XL']
@@ -75,7 +87,7 @@ export default function ProductPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 py-3 md:py-4 flex items-center justify-between gap-4">
-          <Link href="/">
+          <Link href="/" scroll={true}>
             <div className="flex items-center gap-2 shrink-0 cursor-pointer">
               <div className="w-8 h-8 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-black font-bold text-xl shadow-inner">
                 <svg className="w-5 h-5 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -153,20 +165,24 @@ export default function ProductPage() {
             <div className="aspect-square w-full bg-gray-100 rounded relative overflow-hidden border border-gray-200">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={images[activeImage]}
+                src={product.thumbnailURL}
                 alt="Main product"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="flex gap-2.5 overflow-x-auto snap-x scrollbar-hide">
-              {images.map((img, i) => (
+              {product.variation.map((img: any, i: any) => (
                 <div
                   key={i}
                   onMouseEnter={() => setActiveImage(i)}
                   className={`w-20 h-20 shrink-0 cursor-pointer border-2 rounded ${activeImage === i ? 'border-black' : 'border-transparent hover:border-orange-300'} transition-all`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img} alt={`Thumbnail ${i}`} className="w-full h-full object-cover" />
+                  <img
+                    src={img.thumbnailURL}
+                    alt={`Thumbnail ${i}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               ))}
             </div>
@@ -211,8 +227,9 @@ export default function ProductPage() {
               <span className="bg-neutral-950 text-white text-xs px-1.5 py-0.5 rounded font-bold mt-1 shrink-0">
                 Mall
               </span>
-              SweatShirt Korean Style Sweater Men's Long Sleeve Jacket Loose Simple Versatile Trendy
-              Top
+              {product.Title}
+              {/* SweatShirt Korean Style Sweater Men's Long Sleeve Jacket Loose Simple Versatile Trendy
+              Top */}
             </h1>
 
             {/* Ratings & Sold */}
@@ -281,13 +298,13 @@ export default function ProductPage() {
               <div className="flex items-start gap-4 md:gap-8">
                 <span className="text-gray-500 w-16 shrink-0 pt-2">Color</span>
                 <div className="flex flex-wrap gap-2.5">
-                  {colors.map((color) => (
+                  {product.variation.map((vrtn: any, i: any) => (
                     <button
-                      key={color}
-                      onClick={() => setSelectedColor(color)}
-                      className={`px-4 py-1.5 border rounded-sm text-sm hover:border-black hover:text-black transition-colors ${selectedColor === color ? 'border-black text-black bg-orange-50' : 'border-gray-200 bg-white'}`}
+                      key={i}
+                      onClick={() => setSelectedColor(vrtn.Title)}
+                      className={`px-4 py-1.5 border rounded-sm text-sm hover:border-black hover:text-black transition-colors ${selectedColor === vrtn.color ? 'border-black text-black bg-orange-50' : 'border-gray-200 bg-white'}`}
                     >
-                      {color}
+                      {vrtn.Title}
                     </button>
                   ))}
                 </div>

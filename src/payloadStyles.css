@@ -11,3 +11,16 @@
 
 /* Import Tailwind utilities */
 @import 'tailwindcss/utilities.css' layer(utilities);
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/public/fonts/Bagong-Batik-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* Override Payload's default font variables */
+  --font-body: 'MyCustomFont', sans-serif;
+  --font-header: 'MyCustomFont', sans-serif;
+}

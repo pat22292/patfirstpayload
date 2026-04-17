@@ -430,6 +430,7 @@ export default function Shop({ slides }: Props) {
                       id: slide.id,
                     },
                   }}
+                  scroll={true}
                 >
                   {/* Product Image */}
                   <div className="aspect-square relative w-full bg-gray-50 shrink-0 flex items-center justify-center p-2">

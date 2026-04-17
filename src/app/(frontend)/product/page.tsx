@@ -43,7 +43,7 @@ export default async function Product({ searchParams }: PageProps) {
   //  const product  = await payload.findByID({ collection: 'product', id: `${id}`})
 
   return (
-    <ProductPage />
+    <ProductPage product={product} />
     //     <div className="grid place-items-center w-screen h-screen ">
     //      <Link   href={{
 
