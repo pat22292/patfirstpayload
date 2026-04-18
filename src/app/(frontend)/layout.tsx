@@ -8,7 +8,6 @@ import { getHeader } from './globalheader'
 import { Anton, Roboto } from 'next/font/google'
 import SmoothScrollProvider from '../../../components/SmoothScroll'
 import localFont from 'next/font/local'
-import '../../global.css'
 
 const anton = Anton({
   weight: '400',
