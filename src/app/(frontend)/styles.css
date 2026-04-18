@@ -1,47 +1,48 @@
-@import "tailwindcss";
-@import "flowbite-react/plugin/tailwindcss";
+@import 'tailwindcss';
+@import 'flowbite-react/plugin/tailwindcss';
 @source "../../../.flowbite-react/class-list.json";
-
 
 :root {
   --font-anton: var(--font-anton), sans-serif;
   --font-roboto: var(--font-roboto), sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   /* Apply Anton to headings */
-  font-family: var(--font-anton);
+  font-family: var(--font-anton, var(--font-bagwis));
 }
 
 body {
   /* Apply Roboto as the body font */
-  font-family: var(--font-roboto);
+  font-family: var(--font-roboto, var(--font-bagwis));
   margin: 0;
 }
 
 .links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
-    a {
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
-
-    .admin {
-      color: rgb(0, 0, 0);
-      background: rgb(1000, 1000, 1000);
-      border: 1px solid rgb(0, 0, 0);
-    }
-
-    .docs {
-      color: rgb(1000, 1000, 1000);
-      background: rgb(0, 0, 0);
-      border: 1px solid rgb(1000, 1000, 1000);
-    }
+  a {
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
   }
+
+  .admin {
+    color: rgb(0, 0, 0);
+    background: rgb(1000, 1000, 1000);
+    border: 1px solid rgb(0, 0, 0);
+  }
+
+  .docs {
+    color: rgb(1000, 1000, 1000);
+    background: rgb(0, 0, 0);
+    border: 1px solid rgb(1000, 1000, 1000);
+  }
+}
 /* * {
   box-sizing: border-box;
 } */
@@ -66,9 +67,9 @@ body {
   line-height: 32px;
 
   margin: 0; */
-  /* color: rgb(1000, 1000, 1000); */
+/* color: rgb(1000, 1000, 1000); */
 
-  /* @media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     font-size: 15px;
     line-height: 24px;
   }
