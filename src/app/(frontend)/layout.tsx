@@ -16,7 +16,7 @@ const anton = Anton({
 })
 
 const myFont = localFont({
-  src: '../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf', // Path relative to this file
+  src: '../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.woff2', // Path relative to this file
   display: 'swap',
   variable: '--font-bagwis', // Optional: for Tailwind CSS integration
 })

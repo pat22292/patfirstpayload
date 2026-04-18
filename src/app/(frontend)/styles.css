@@ -5,7 +5,7 @@
 :root {
   --font-anton: var(--font-anton), sans-serif;
   --font-roboto: var(--font-roboto), sans-serif;
-  --font-bagwis: var(--font-bagwis), sans-serif;
+  --font-bagwis: var(--font-bagwis);
 }
 
 h1,
