@@ -5,7 +5,8 @@
 
 @font-face {
   font-family: 'Bagwis';
-  src: url('../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf') format('ttf');
+  src: url('../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf') format('truetype');
   font-style: normal;
   font-display: swap;
+  unicode-range: U+1700-171F, U+1720-1734, U+1735-1736;
 }
