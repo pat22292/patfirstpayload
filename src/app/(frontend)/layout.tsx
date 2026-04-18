@@ -16,12 +16,7 @@ const anton = Anton({
 })
 
 const baybayin = localFont({
-  src: [
-    {
-      path: '../../../public/fonts/Bagwis_baybayin_font-Regular.woff2',
-      weight: '400',
-    },
-  ],
+  src: '../../../public/fonts/Bagwis_baybayin_font-Regular.woff2',
   variable: '--font-baybayin',
   display: 'swap',
 })

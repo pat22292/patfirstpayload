@@ -10,9 +10,8 @@
 
 @font-face {
   font-family: 'BagwisBaybayin';
-  src:
-    url('../../../public/fonts/Bagwis_baybayin_font-Regular.woff2') format('woff2'),
-    url('../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf') format('truetype');
+  src: url('../../../public/fonts/Bagwis_baybayin_font-Regular.woff2') format('woff2');
+  /* url('../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf') format('truetype'); */
   font-weight: 400;
   font-style: normal;
   unicode-range: U+1700-171F, U+1720-1734, U+1735-1736;
