@@ -11,7 +11,7 @@
 @font-face {
   font-family: 'BagwisBaybayin';
   src: url('../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf') format('truetype');
-  unicode-range: U+1700-173F;
+  unicode-range: U+1700-171F, U+1720-1734, U+1735-1736;
   font-display: swap;
 }
 
