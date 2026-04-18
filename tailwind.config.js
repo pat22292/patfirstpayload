@@ -42,7 +42,7 @@ export default {
       fontFamily: {
         sans: ['var(--font-roboto)', 'sans-serif'], // Use roboto as default sans
         heading: ['var(--font-anton)', 'sans-serif'], // Custom heading class
-        bagwis: ['var(--font-bagwis)'],
+        bagwis: ['var(--font-bagwis)', 'sans-serif'],
       },
     },
   },
