@@ -5,28 +5,18 @@
 :root {
   --font-anton: var(--font-anton), sans-serif;
   --font-roboto: var(--font-roboto), sans-serif;
-  --font-bagwis: var(--font-bagwis);
-}
-@font-face {
-  font-family: 'bagwis';
-
-  src: url('../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf');
-}
-
-.bagwis {
-  font-family: 'bagwis';
 }
 
 h1,
 h2,
 h3 {
   /* Apply Anton to headings */
-  font-family: var(--font-anton, var(--font-bagwis));
+  font-family: var(--font-anton);
 }
 
 body {
   /* Apply Roboto as the body font */
-  font-family: var(--font-roboto, var(--font-bagwis));
+  font-family: var(--font-roboto);
   margin: 0;
 }
 
