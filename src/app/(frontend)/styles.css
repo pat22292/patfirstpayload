@@ -7,6 +7,11 @@
   --font-roboto: var(--font-roboto), sans-serif;
   --font-bagwis: var(--font-bagwis);
 }
+@font-face {
+  font-family: 'bagwis';
+
+  src: url('../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.woff2');
+}
 
 h1,
 h2,

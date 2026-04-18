@@ -27,25 +27,24 @@
 //   // plugins: [require('@tailwindcss/forms')],
 // }
 
-
 export default {
   content: [
-       './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{html,js,ts,jsx,tsx,mdx}',
     './node_modules/flowbite/**/*.js',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/**/*.{html,js,ts,jsx,tsx,mdx} '
+    './src/**/*.{html,js,ts,jsx,tsx,mdx} ',
   ],
   theme: {
     extend: {
-        fontFamily: {
+      fontFamily: {
         sans: ['var(--font-roboto)', 'sans-serif'], // Use roboto as default sans
         heading: ['var(--font-anton)', 'sans-serif'], // Custom heading class
+        bagwis: ['bagwis', 'sans-serif'],
       },
     },
-    
   },
   plugins: [], // Use the imported forms plugin
-};
+}
