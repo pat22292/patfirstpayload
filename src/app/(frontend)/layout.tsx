@@ -18,7 +18,7 @@ const anton = Anton({
 const myFont = localFont({
   src: [
     {
-      path: '../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.woff2',
+      path: '../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf',
     },
   ], // Path relative to this file
   // display: 'swap',
