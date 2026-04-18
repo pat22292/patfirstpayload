@@ -54,10 +54,13 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const header = await getHeader()
   return (
     <ThemeProvider theme={customTheme}>
-      <html lang="en" className={`${anton.variable} ${roboto.variable} antialiased `}>
+      <html
+        lang="en"
+        className={`${anton.variable} ${roboto.variable} ${myFont.variable} antialiased `}
+      >
         <body
           suppressHydrationWarning={true}
-          className={`${anton.variable} ${roboto.variable} ${myFont.className} antialiased`}
+          className={`${anton.variable} ${roboto.variable} ${myFont.variable} antialiased`}
         >
           {/* <Header logo={header.logo} navigation={header.navigation} /> */}
           {/*<ThemeModeScript />*/}
