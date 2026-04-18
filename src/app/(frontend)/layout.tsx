@@ -15,11 +15,11 @@ const anton = Anton({
   variable: '--font-anton',
 })
 
-const myFont = localFont({
-  src: '../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.woff2', // Path relative to this file
-  // display: 'swap',
-  // variable: '--font-bagwis', // Optional: for Tailwind CSS integration
-})
+// const myFont = localFont({
+//   src: '../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.woff2', // Path relative to this file
+//   // display: 'swap',
+//   // variable: '--font-bagwis', // Optional: for Tailwind CSS integration
+// })
 
 const roboto = Roboto({
   weight: ['400', '700'], // Specify desired weights
@@ -56,11 +56,15 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <ThemeProvider theme={customTheme}>
       <html
         lang="en"
-        className={`${anton.variable} ${roboto.variable} ${myFont.className} antialiased `}
+        className={`${anton.variable} ${roboto.variable} 
+        
+        antialiased `}
       >
         <body
           suppressHydrationWarning={true}
-          className={`${anton.variable} ${roboto.variable} ${myFont.className} antialiased`}
+          className={`${anton.variable} ${roboto.variable}
+           
+           antialiased`}
         >
           {/* <Header logo={header.logo} navigation={header.navigation} /> */}
           {/*<ThemeModeScript />*/}
