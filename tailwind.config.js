@@ -27,6 +27,7 @@
 //   // plugins: [require('@tailwindcss/forms')],
 // }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -42,7 +43,7 @@ export default {
       fontFamily: {
         sans: ['var(--font-roboto)', 'sans-serif'], // Use roboto as default sans
         heading: ['var(--font-anton)', 'sans-serif'], // Custom heading class
-        // bagwis: ['var(--font-bagwis)', 'sans-serif'],
+        bagwis: ['var(--font-bagwis)', 'sans-serif'],
       },
     },
   },

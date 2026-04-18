@@ -8,6 +8,7 @@ import { getHeader } from './globalheader'
 import { Anton, Roboto } from 'next/font/google'
 import SmoothScrollProvider from '../../../components/SmoothScroll'
 import localFont from 'next/font/local'
+import '../../global.css'
 
 const anton = Anton({
   weight: '400',
@@ -56,7 +57,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <ThemeProvider theme={customTheme}>
       <html
         lang="en"
-        className={`${anton.variable} ${roboto.variable} ${myFont.variable} ${myFont.className}
+        className={`${anton.variable} ${roboto.variable} ${myFont.variable} 
 
 
         
@@ -65,7 +66,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <body
           suppressHydrationWarning={true}
           className={`${anton.variable} ${roboto.variable}
-           ${myFont.variable} ${myFont.className}
+         ${myFont.className}
            antialiased`}
         >
           {/* <Header logo={header.logo} navigation={header.navigation} /> */}
