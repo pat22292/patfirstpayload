@@ -103,7 +103,7 @@ export default function Shop({ slides }: Props) {
               </svg>
             </div>
             {/* <span style={{ fontFamily: "'BagwisBaybayin', sans-serif" }}>ᜆᜒᜈ᜔ᜇᜑᜈ᜔</span> */}
-            <BaybayinText size="2rem">ᜆᜒᜈ᜔ᜇᜑᜈ᜔</BaybayinText>
+            <BaybayinText size="2rem">TINDAHAN</BaybayinText>
           </div>
 
           {/* Search Bar */}
