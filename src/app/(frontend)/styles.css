@@ -16,8 +16,12 @@ h3 {
 
 body {
   /* Apply Roboto as the body font */
-  font-family: var(--font-roboto);
+  font-family: var(--font-roboto) var(--font-bagwis);
   margin: 0;
+}
+
+.use-bagwis-font {
+  font-family: var(--font-bagwis) !important;
 }
 
 .links {
