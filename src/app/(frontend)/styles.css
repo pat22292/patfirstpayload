@@ -10,7 +10,11 @@
 @font-face {
   font-family: 'bagwis';
 
-  src: url('../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.woff2');
+  src: url('../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf');
+}
+
+.bagwis {
+  font-family: 'bagwis';
 }
 
 h1,
