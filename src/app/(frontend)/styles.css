@@ -28,7 +28,7 @@ h3 {
 
 body {
   /* Apply Roboto as the body font */
-  font-family: var(--font-roboto) var(--font-bagwis);
+  font-family: var(--font-roboto) var(--font-baybayin);
   margin: 0;
 }
 

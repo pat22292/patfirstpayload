@@ -21,10 +21,6 @@ const baybayin = localFont({
       path: '../../../public/fonts/Bagwis_baybayin_font-Regular.woff2',
       weight: '400',
     },
-    {
-      path: '../../../public/fonts/BagwisBaybayinFontRegular-ZV3MK.ttf',
-      weight: '400',
-    },
   ],
   variable: '--font-baybayin',
   display: 'swap',
