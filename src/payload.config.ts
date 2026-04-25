@@ -17,12 +17,11 @@ import type { UploadApiResponse } from 'cloudinary'
 import { Header } from './globals/Header'
 import { Pages } from '@/collections/Pages'
 // import SaveButton from './admin/SaveButton'
-import { nodemailerAdapter } from '@payloadcms/email-nodemailer';
-import nodemailer from 'nodemailer';
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
+import nodemailer from 'nodemailer'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-
 
 // const Header: GlobalConfig = {
 //   slug: 'header',
@@ -47,11 +46,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
-
-
-
 export default buildConfig({
-   email: nodemailerAdapter({
+  email: nodemailerAdapter({
     defaultFromAddress: 'dream.appbuilders2022@zohomail.com',
     defaultFromName: 'Your App',
     transport: nodemailer.createTransport({
@@ -65,20 +61,20 @@ export default buildConfig({
     }),
   }),
   admin: {
-theme: 'light',
+    theme: 'dark',
     user: Users.slug,
-  //    components: {
-  //     // Logo: async () => (await import('@/admin/Logo')).default,
-  //     // edit :{
-  //     //    SaveButton: { component: SaveButton },
-  //     // },  
-  //   // graphics: {
-  //   //   Logo,
-  //   // },
-  
-  // }  as any,
+    //    components: {
+    //     // Logo: async () => (await import('@/admin/Logo')).default,
+    //     // edit :{
+    //     //    SaveButton: { component: SaveButton },
+    //     // },
+    //   // graphics: {
+    //   //   Logo,
+    //   // },
+
+    // }  as any,
   },
-   
+
   collections: [Users, Media, Products, ProductVariations, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -89,34 +85,28 @@ theme: 'light',
   //   url: process.env.DATABASE_URL || '',
   // }),
   db: postgresAdapter({
-     pool: {
+    pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
   sharp,
   plugins: [
     cloudinaryStorage({
-
       config: {
-    
-
         cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
         api_key: process.env.CLOUDINARY_API_KEY!,
         api_secret: process.env.CLOUDINARY_API_SECRET!,
-
       },
 
       collections: {
-
         media: true,
-        product:  true,
+        product: true,
         productVariation: true,
       },
 
       folder: 'payload-media',
-
     }),
-    
+
     // payloadCloudPlugin(),
     // cloudStoragePlugin({
     //   collections: {

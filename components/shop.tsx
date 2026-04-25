@@ -398,7 +398,7 @@ export default function Shop({ slides }: Props) {
                       className="absolute left-0 top-0 h-full bg-neutral-950 rounded-full"
                       style={{ width: `${((deal * 17) % 80) + 10}%` }}
                     ></div>
-                    <div className="absolute inset-0 flex items-center justify-center text-[8px] md:text-[10px] text-white font-bold tracking-wider z-10 z-[1] drop-shadow-md">
+                    <div className="absolute inset-0 flex items-center justify-center text-[8px] md:text-[10px] text-white font-bold tracking-wider z-10 drop-shadow-md">
                       {((deal * 23) % 100) + 10} SOLD
                     </div>
                   </div>

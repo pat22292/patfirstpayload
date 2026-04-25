@@ -1,7 +1,24 @@
-import type { CollectionConfig, Field } from 'payload'
+import type { CollectionConfig, CustomComponent, Field } from 'payload'
+// import { PostsModal } from '@/components/PostsModal'
+
+// const PostsModalComponent: CustomComponent = PostsModal as unknown as CustomComponent
 
 export const Products: CollectionConfig = {
   slug: 'product',
+  admin: {
+    // useAsTitle: 'Title',
+    // hidden: true,
+    useAsTitle: 'Title',
+    defaultColumns: ['filename', 'Title', 'alt', 'variation'],
+  },
+  // admin: {
+  //   components: {
+  //     edit: {
+  //       beforeDocumentControls: [PostsModalComponent],
+  //     },
+  //     // fires when list view loads
+  //   },
+  // },
   access: {
     // read: () => true,
     create: ({ req: { user } }) => {
@@ -49,7 +66,7 @@ export const Products: CollectionConfig = {
 
         const results = getAllIds(usedMedia)
 
-        // console.log(results)
+        console.log(results)
         return {
           id: {
             not_in: results,
@@ -66,6 +83,7 @@ export const Products: CollectionConfig = {
         if (doc.cloudinary?.secure_url) {
           doc.url = doc.cloudinary.secure_url
         }
+
         delete doc.cloudinary
         delete doc.url
         delete doc.mimeType

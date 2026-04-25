@@ -11,14 +11,6 @@ export default function ProductPage({ product }: { product: any }) {
   const [selectedColor, setSelectedColor] = useState('White')
   const [selectedSize, setSelectedSize] = useState('L')
 
-  const images = [
-    'https://via.placeholder.com/600x600?text=White+Sweater',
-    'https://via.placeholder.com/600x600?text=Black+Sweater',
-    'https://via.placeholder.com/600x600?text=Red+Sweater',
-    'https://via.placeholder.com/600x600?text=Blue+Sweater',
-    'https://via.placeholder.com/600x600?text=Yellow+Sweater',
-  ]
-
   useEffect(() => {
     // Standard instant scroll
     window.scrollTo(0, 0)
@@ -30,7 +22,6 @@ export default function ProductPage({ product }: { product: any }) {
     }
   }, [])
 
-  const colors = ['Black', 'Gray', 'White', 'Yellow', 'Green', 'Pink', 'Wine Red', 'Blue']
   const sizes = ['M', 'L', 'XL', '2XL', '3XL']
 
   return (
@@ -320,7 +311,7 @@ export default function ProductPage({ product }: { product: any }) {
               <div className="flex items-start gap-4 md:gap-8">
                 <span className="text-gray-500 w-16 shrink-0 pt-2">Size</span>
                 <div className="flex flex-wrap gap-2.5">
-                  {sizes.map((size) => (
+                  {/* {sizes.map((size) => (
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
@@ -328,7 +319,7 @@ export default function ProductPage({ product }: { product: any }) {
                     >
                       {size}
                     </button>
-                  ))}
+                  ))} */}
                 </div>
               </div>
 

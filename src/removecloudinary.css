@@ -1,0 +1,10 @@
+[data-field-path='cloudinaryPublicId'],
+[data-field-path='resourceType'],
+[data-field-path='secureURL'],
+[data-field-path='format'],
+[data-field-path='size'],
+[data-field-path='cloudinaryCreatedAt'],
+[data-field-path='version'],
+[data-field-path='versionId'] {
+  display: none;
+}

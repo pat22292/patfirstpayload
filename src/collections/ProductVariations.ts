@@ -1,5 +1,10 @@
-import type { CollectionConfig, Field } from 'payload'
+import type { CollectionConfig, CustomComponent, Field } from 'payload'
 import { CustomJSONComponent } from '../components/CustomJSONComponent'
+import { PostsModal } from '@/components/PostsModal'
+import { SiblingVariations } from '@/components/SiblingVariations/Index'
+
+const PostsModalComponent: CustomComponent = PostsModal as unknown as CustomComponent
+const SiblingVariationsComponent: CustomComponent = SiblingVariations as unknown as CustomComponent
 
 export const ProductVariations: CollectionConfig = {
   slug: 'productVariation',
@@ -25,7 +30,14 @@ export const ProductVariations: CollectionConfig = {
     },
   },
   admin: {
+    useAsTitle: 'Title',
     hidden: true,
+    components: {
+      edit: {
+        beforeDocumentControls: [PostsModalComponent, SiblingVariationsComponent],
+      },
+      // fires when list view loads
+    },
   },
   fields: [
     {
