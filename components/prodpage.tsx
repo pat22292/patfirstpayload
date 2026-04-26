@@ -1,16 +1,30 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import AuthButtons from './authbuttons'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Header from './header'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import type { Swiper as SwiperType } from 'swiper'
+import 'swiper/css'
 
 export default function ProductPage({ product }: { product: any }) {
   const [activeImage, setActiveImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
-  const [selectedColor, setSelectedColor] = useState('White')
+  const [selectedColor, setSelectedColor] = useState(
+    product?.variation?.[0]?.Title ?? 'White',
+  )
   const [selectedSize, setSelectedSize] = useState('L')
+  const mainSwiperRef = useRef<SwiperType | null>(null)
+  const thumbSwiperRef = useRef<SwiperType | null>(null)
+
+  const handleVariantSelect = (index: number, title: string) => {
+    setActiveImage(index)
+    setSelectedColor(title)
+    mainSwiperRef.current?.slideTo(index)
+    thumbSwiperRef.current?.slideTo(index)
+  }
 
   useEffect(() => {
     // Standard instant scroll
@@ -53,30 +67,72 @@ export default function ProductPage({ product }: { product: any }) {
         <section className="bg-white p-4 md:p-6 rounded shadow-sm flex flex-col lg:flex-row gap-6 md:gap-8">
           {/* Left: Images */}
           <div className="w-full lg:w-[450px] shrink-0 flex flex-col gap-3">
-            <div className="aspect-square w-full bg-gray-100 rounded relative overflow-hidden border border-gray-200">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={product.thumbnailURL}
-                alt="Main product"
-                className="w-full h-full object-cover"
-              />
+            {/* Main image Swiper – no controls, programmatically controlled */}
+            <div className="aspect-square w-full bg-gray-100 rounded overflow-hidden border border-gray-200">
+              <Swiper
+                onSwiper={(swiper) => { mainSwiperRef.current = swiper }}
+                onSlideChange={(swiper) => setActiveImage(swiper.activeIndex)}
+                allowTouchMove={true}
+                loop={false}
+                className="w-full h-full"
+              >
+                {product.variation.map((img: any, i: number) => (
+                  <SwiperSlide key={i}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img.thumbnailURL}
+                      alt={img.Title ?? `Slide ${i}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-            <div className="flex gap-2.5 overflow-x-auto snap-x scrollbar-hide">
-              {product.variation.map((img: any, i: any) => (
-                <div
-                  key={i}
-                  onMouseEnter={() => setActiveImage(i)}
-                  className={`w-20 h-20 shrink-0 cursor-pointer border-2 rounded ${activeImage === i ? 'border-black' : 'border-transparent hover:border-orange-300'} transition-all`}
+
+            {/* Thumbnail strip Swiper – 4 visible, arrow to slide forward */}
+            <div className="relative flex items-center">
+              <Swiper
+                onSwiper={(swiper) => { thumbSwiperRef.current = swiper }}
+                slidesPerView={4}
+                spaceBetween={8}
+                allowTouchMove={true}
+                loop={false}
+                className="w-full"
+              >
+                {product.variation.map((img: any, i: number) => (
+                  <SwiperSlide key={i}>
+                    <div
+                      onClick={() => handleVariantSelect(i, img.Title)}
+                      className={`w-full aspect-square cursor-pointer border-2 rounded transition-all ${
+                        activeImage === i
+                          ? 'border-black'
+                          : 'border-transparent hover:border-orange-300'
+                      }`}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={img.thumbnailURL}
+                        alt={img.Title ?? `Thumb ${i}`}
+                        className="w-full h-full object-cover rounded"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              {/* Next arrow – only show when there are more than 4 variations */}
+              {product.variation.length > 4 && (
+                <button
+                  onClick={() => thumbSwiperRef.current?.slideNext()}
+                  className="absolute right-0 z-10 w-7 h-7 flex items-center justify-center bg-white border border-gray-300 rounded-full shadow-sm hover:bg-gray-50 transition-colors"
+                  aria-label="Next thumbnails"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={img.thumbnailURL}
-                    alt={`Thumbnail ${i}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
+                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
             </div>
+
             <div className="flex items-center justify-center gap-4 mt-2 text-sm text-gray-600">
               <span className="flex items-center gap-1 font-medium">
                 <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
@@ -189,11 +245,15 @@ export default function ProductPage({ product }: { product: any }) {
               <div className="flex items-start gap-4 md:gap-8">
                 <span className="text-gray-500 w-16 shrink-0 pt-2">Color</span>
                 <div className="flex flex-wrap gap-2.5">
-                  {product.variation.map((vrtn: any, i: any) => (
+                  {product.variation.map((vrtn: any, i: number) => (
                     <button
                       key={i}
-                      onClick={() => setSelectedColor(vrtn.Title)}
-                      className={`px-4 py-1.5 border rounded-sm text-sm hover:border-black hover:text-black transition-colors ${selectedColor === vrtn.color ? 'border-black text-black bg-orange-50' : 'border-gray-200 bg-white'}`}
+                      onClick={() => handleVariantSelect(i, vrtn.Title)}
+                      className={`px-4 py-1.5 border rounded-sm text-sm hover:border-black hover:text-black transition-colors ${
+                        activeImage === i
+                          ? 'border-black text-black bg-orange-50'
+                          : 'border-gray-200 bg-white'
+                      }`}
                     >
                       {vrtn.Title}
                     </button>
