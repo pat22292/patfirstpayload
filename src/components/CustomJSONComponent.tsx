@@ -115,24 +115,24 @@ export const CustomJSONComponent = ({ path }: { path: string }) => {
               {/* <p>Sibling variation IDs: {siblings.join(', ')}</p> */}
             </div>
           </div>
-          <label>Custom Data Builder</label>
-          <div>Current ID: {id}</div>
-          <div style={{ display: 'grid', gap: '10px', marginBottom: '10px', width: '50%' }}>
-            <label>Key</label>
-            <input
-              type="text"
-              value={keyInput}
-              onChange={(e) => setkeyInput(e.target.value.toString())}
-            />
-            <label>Value</label>
-            <input
-              type="text"
-              value={valueInput}
-              onChange={(e) => setValueInput(e.target.value.toString())}
-            />
-          </div>
         </>
       )}
+      <label>Custom Data Builder</label>
+      <div>Current ID: {id}</div>
+      <div style={{ display: 'grid', gap: '10px', marginBottom: '10px', width: '50%' }}>
+        <label>Key</label>
+        <input
+          type="text"
+          value={keyInput}
+          onChange={(e) => setkeyInput(e.target.value.toString())}
+        />
+        <label>Value</label>
+        <input
+          type="text"
+          value={valueInput}
+          onChange={(e) => setValueInput(e.target.value.toString())}
+        />
+      </div>
       <button onClick={() => setInitialValue({ ...initialValue, [keyInput]: valueInput })}>
         Add to Custom Data
       </button>
@@ -148,9 +148,11 @@ export const CustomJSONComponent = ({ path }: { path: string }) => {
       {/* <button onClick={() => setValue(JSON.parse(JSON.stringify(initialValue)))}>
         Update Price
       </button> */}
-      <button onClick={() => setOpen(true)}>UPDATE</button>
+      <button type="button" onClick={() => setOpen(true)}>
+        UPDATE
+      </button>
 
-      <p>These Option will also be applied to these variation IDs: {siblings.join(', ')}</p>
+      {/* <p>These Option will also be applied to these variation IDs: {siblings.join(', ')}</p> */}
     </div>
   )
 }

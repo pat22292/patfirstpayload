@@ -87,6 +87,12 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
+      // Keep connections alive to prevent ETIMEDOUT on cloud Postgres (Neon/Supabase)
+      keepAlive: true,
+      keepAliveInitialDelayMillis: 10000,
+      idleTimeoutMillis: 30000, // close idle connections after 30s (before cloud kills them)
+      connectionTimeoutMillis: 10000, // fail fast if can't connect in 10s
+      max: 10, // limit pool size
     },
   }),
   sharp,
