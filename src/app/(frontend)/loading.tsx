@@ -1,9 +1,21 @@
 'use client'
 
+import { useEffect } from 'react'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function Loading() {
+  useEffect(() => {
+    // Standard instant scroll
+    window.scrollTo(0, 0)
+
+    // Optional: Smooth scroll
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+  }, [])
+
   return (
     <SkeletonTheme baseColor="#e5e7eb" highlightColor="#f3f4f6">
       <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
